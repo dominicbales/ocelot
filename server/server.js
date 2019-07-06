@@ -1,6 +1,7 @@
 // const express = require('express');
 require("dotenv").config();
-const app = require("express")();
+const express = require("express");
+const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const cors = require("cors");
@@ -35,7 +36,11 @@ app.use("/api/projects", project);
 app.use("/api/issues", issue);
 // app.use('/api/issue/comment',)
 
-seed();
+// seed();
+
+app.get("/", function(req, res) {
+  res.send("ayyyy dkjasfklj");
+});
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/dist"));
@@ -44,10 +49,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
   });
 }
-
-app.get("/", function(req, res) {
-  res.send("ayyyy dkjasfklj");
-});
 
 // io.on("connection", function(socket) {
 //   console.log("******CONNECTED*********");

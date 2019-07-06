@@ -31,9 +31,9 @@ export class Issue extends Component {
   };
 
   async componentDidMount() {
-    const { issueData } = this.props.location;
-    await this.props.fetchIssue(issueData._id);
-    await this.props.fetchIssueComments(issueData._id);
+    console.log("issueData:", this.props.match.params.id);
+    await this.props.fetchIssue(this.props.match.params.id);
+    await this.props.fetchIssueComments(this.props.match.params.id);
   }
 
   componentDidUpdate(prevProps) {
@@ -43,15 +43,14 @@ export class Issue extends Component {
   }
 
   handleActiveChange = async (e, data) => {
-    const { issueData } = this.props.location;
     const activeTemp = {
       active: data.value
     };
     await axios.post(
-      `${localURL}api/issues/${issueData._id}/active`,
+      `${localURL}api/issues/${this.props.match.params.id}/active`,
       activeTemp
     );
-    this.props.fetchIssue(issueData._id);
+    this.props.fetchIssue(this.props.match.params.id);
   };
 
   handleTextField = async (e, data) => {
@@ -65,17 +64,15 @@ export class Issue extends Component {
       ownerName: this.props.user.username
     };
     const result = await axios.post(
-      `${localURL}api/issues/comment/${this.props.location.issueData._id}`,
+      `${localURL}api/issues/comment/${this.props.match.params.id}`,
       submitData
     );
     this.setState({ textFieldValue: "" }, async function() {
-      const { issueData } = this.props.location;
-      await this.props.fetchIssueComments(issueData._id);
+      await this.props.fetchIssueComments(this.props.match.params.id);
     });
   };
 
   handleReplyClick = data => {
-    console.log("reply clicked");
     this.setState({ open: !this.state.open, replyTo: data });
   };
 
@@ -84,7 +81,6 @@ export class Issue extends Component {
   };
 
   handleReplySubmit = async () => {
-    const { issueData } = this.props.location;
     const { replyInput, replyTo } = this.state;
 
     const submitData = {
@@ -93,12 +89,11 @@ export class Issue extends Component {
       author: this.props.user.username
     };
     await axios.post(`${localURL}api/issues/reply/${replyTo._id}`, submitData);
-    await this.props.fetchIssueComments(issueData._id);
+    await this.props.fetchIssueComments(this.props.match.params.id);
     this.setState({ open: false, replyInput: "" });
   };
 
   render() {
-    // const {issueData} = this.props.location
     const { issue, issueComments } = this.props;
     const { textFieldValue, open, replyInput, replyTo } = this.state;
 

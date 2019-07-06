@@ -31,7 +31,6 @@ export const fetchIssues = (projectID, pageNum) => async dispatch => {
 export const fetchIssue = issueId => async dispatch => {
   try {
     const result = await axios.get(`${localURL}api/issues/issue/${issueId}`);
-    console.log("result is:", result.data);
     dispatch(setIssue(result.data));
   } catch (err) {
     console.log("couldnt fetch Issue");
@@ -41,10 +40,9 @@ export const fetchIssue = issueId => async dispatch => {
 export const fetchIssueComments = issueId => async dispatch => {
   try {
     let comment = await axios.get(`${localURL}api/issues/comment/${issueId}`);
-    console.log("comments:", comment.data);
     dispatch(setIssueComments(comment.data));
   } catch (err) {
-    console.log("couldnt fetch Issue");
+    console.log("couldnt fetch Issue Comments");
   }
 };
 

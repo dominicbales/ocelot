@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { signin, signout } from "../../redux/actions/user";
 import { connect } from "react-redux";
-import { socket, addNotif } from "../../events/test";
+// import { socket, addNotif } from "../../events/test";
 import axios from "axios";
 import { localURL } from "../../../api";
 // Components
@@ -22,17 +22,17 @@ export class Home extends Component {
     // });
   }
   componentWillUnmount() {
-    socket.off();
+    // socket.off();
   }
   handleRedirect = () => {
     this.setState({ signedIn: !this.state.signedIn });
   };
-  handleAddNotif = () => {
-    const user = {
-      email: "test2@test.com"
-    };
-    addNotif(user);
-  };
+  // handleAddNotif = () => {
+  //   const user = {
+  //     email: "test2@test.com"
+  //   };
+  //   addNotif(user);
+  // };
   handleSignin = () => {
     const user = {
       email: "test6@test.com",
@@ -75,7 +75,7 @@ export class Home extends Component {
           <button onClick={this.handleCheckCurrentUser}>
             check current user
           </button>
-          <button onClick={this.handleAddNotif}>add notif</button>
+          {/* <button onClick={this.handleAddNotif}>add notif</button> */}
           <button onClick={this.handleRedirect}>Redirect</button>
           {this.state.signedIn ? (
             <Redirect exact to="/dashboard" />

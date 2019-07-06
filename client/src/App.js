@@ -17,13 +17,9 @@ import setAuthToken from "./utils/setAuthToken";
 import "semantic-ui-css/semantic.min.css";
 import "./styles/index.scss";
 // Event functions
-import { subscribeToTimer } from "./events/test";
+// import { subscribeToTimer } from "./events/test";
 
-{
-  /* <a href='https://github.com/login/oauth/authorize?client_id=6245fb0c0a2f735733fd'>Singin</a> */
-}
-
-console.log("outside check user");
+/* <a href='https://github.com/login/oauth/authorize?client_id=6245fb0c0a2f735733fd'>Singin</a> */
 
 //Check for token
 if (localStorage.jwtToken) {

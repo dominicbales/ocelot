@@ -46,7 +46,8 @@ export class Home extends Component {
       password: "123456",
       username: "nothing"
     };
-    const data = await axios.post(`${localURL}api/user/signup`);
+    const data = await axios.post(`${localURL}api/user/signup`, user);
+    console.log("create data is:", data);
   };
   handleCheckCurrentUser = async () => {
     const data = await axios.get(`${localURL}api/user/current`);

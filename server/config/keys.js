@@ -1,4 +1,4 @@
 module.exports = {
-    mongoURI: 'mongodb://localhost/ocelot',
-    SECRET_KEY: "secret"
+  mongoURI: process.env.MONGODB_URI || "mongodb://localhost/ocelot",
+  SECRET_KEY: "secret"
 };

@@ -8,8 +8,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const db = require("./models");
 const passport = require("passport");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const seed = require("./seed");
+const path = require("path");
 
 // Importing routes
 const user = require("./routes/api/user");
@@ -36,40 +37,33 @@ app.use("/api/issues", issue);
 
 seed();
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/dist"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
+  });
+}
+
 app.get("/", function(req, res) {
   res.send("ayyyy dkjasfklj");
 });
 
-io.on("connection", function(socket) {
-  console.log("******CONNECTED*********");
-  socket.on("test", data => {
-    console.log("just testing:", data);
-  });
+// io.on("connection", function(socket) {
+//   console.log("******CONNECTED*********");
+//   socket.on("test", data => {
+//     console.log("just testing:", data);
+//   });
 
-  socket.on("disconnect", function() {
-    console.log("user disconnected");
-  });
+//   socket.on("disconnect", function() {
+//     console.log("user disconnected");
+//   });
 
-  // socket.on('add_notification', async (data) => {
-  //     let user = await db.User.findOne({
-  //         email: data.email
-  //     });
-  //     db.Project.create(
-  //         {
-  //            name: 'socket project',
-  //         }, function(err, project){
-  //             if(err){
-  //                 console.log(err);
-  //             } else {
-  //                 console.log('PROJECTS IS:', project)
-  //                 user.projects.push(project);
-  //                 user.save();
-  //                 io.emit('show_notification', project)
-  //                 console.log("Created new project");
-  //             }
-  //         });
+// });
 
-  // })
-});
-
-server.listen(PORT, () => console.log("Running for my life on :3000"));
+server.listen(PORT, () =>
+  console.log(
+    "Running for my life on :3000",
+    path.join(__dirname, "../client", "dist", "index.html")
+  )
+);

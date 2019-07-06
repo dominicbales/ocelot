@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { localURL } from "../../api";
 // Actions
 import { setAuthorization } from "../redux/actions/user";
 
@@ -13,9 +14,7 @@ export default function withAuth(ComponentToBeRendered) {
     async componentDidMount() {
       const { setAuthorization } = this.props;
       try {
-        const isValidated = await axios.get(
-          "http://localhost:3000/api/user/current"
-        );
+        const isValidated = await axios.get(`${localURL}api/user/current`);
         console.log("isvalidate:", isValidated.status);
         if (isValidated.status === 200) {
           await setAuthorization(true);

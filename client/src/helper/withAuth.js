@@ -34,10 +34,8 @@ export default function withAuth(ComponentToBeRendered) {
     render() {
       const { checking } = this.state;
       const { isAuthorized } = this.props;
-      console.log("withA state:", this.state);
-      console.log("withA props:", this.props);
-      const user = JSON.parse(localStorage.getItem("user"));
-      console.log("withAuth user:", user);
+
+      //   const user = JSON.parse(localStorage.getItem("user"));
       return (
         <>
           {checking ? (

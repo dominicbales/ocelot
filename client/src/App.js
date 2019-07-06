@@ -58,15 +58,6 @@ export class App extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/dashboard" component={withAuth(Dashboard)} />
-        {/* <Route 
-                    exact 
-                    path='/dashboard' 
-                    render={(props) => 
-                    <CheckUserAuthorization {...props} >
-                        <Dashboard {...props} />
-                    </CheckUserAuthorization>
-                } 
-                 /> */}
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
       </Switch>

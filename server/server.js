@@ -38,9 +38,9 @@ app.use("/api/issues", issue);
 
 // seed();
 
-app.get("/", function(req, res) {
-  res.send("ayyyy dkjasfklj");
-});
+// app.get("/", function(req, res) {
+//   res.send("ayyyy dkjasfklj");
+// });
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/dist"));

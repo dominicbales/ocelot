@@ -4,6 +4,7 @@ import { signin, signout } from "../../redux/actions/user";
 import { connect } from "react-redux";
 import { socket, addNotif } from "../../events/test";
 import axios from "axios";
+import { localURL } from "../../../api";
 // Components
 import Navbar from "../navbar/Navbar";
 
@@ -45,10 +46,10 @@ export class Home extends Component {
       password: "123456",
       username: "nothing"
     };
-    const data = await axios.post("http://localhost:3000/api/user/signup");
+    const data = await axios.post(`${localURL}api/user/signup`);
   };
   handleCheckCurrentUser = async () => {
-    const data = await axios.get("http://localhost:3000/api/user/current");
+    const data = await axios.get(`${localURL}api/user/current`);
     console.log("user is:", data);
   };
   handleSignout = () => {
@@ -57,9 +58,7 @@ export class Home extends Component {
 
   handleAddProject = async () => {
     const { user } = this.props;
-    const data = await axios.post(
-      `http://localhost:3000/api/projects/${user._id}`
-    );
+    const data = await axios.post(`${localURL}api/projects/${user._id}`);
     console.log("added new project:", data);
   };
   render() {

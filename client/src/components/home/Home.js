@@ -7,6 +7,8 @@ import axios from "axios";
 import { localURL } from "../../../api";
 // Components
 import Navbar from "../navbar/Navbar";
+import HomeHeader from "../home/header/HomeHeader";
+import HomeContent from "../home/content/HomeContent";
 
 export class Home extends Component {
   state = {
@@ -64,10 +66,12 @@ export class Home extends Component {
   };
   render() {
     return (
-      <>
+      <div style={{ backgroundColor: "#fefefe", height: "100%" }}>
         <Navbar />
+        <HomeHeader />
+        <HomeContent />
         <div>
-          <h1>data is {this.state.data.name}</h1>
+          {/* <h1>data is {this.state.data.name}</h1>
           <button onClick={this.handleAddProject}>Add new project</button>
           <button onClick={this.handleCreateUser}>Create</button>
           <button onClick={this.handleSignin}>signin</button>
@@ -75,15 +79,14 @@ export class Home extends Component {
           <button onClick={this.handleCheckCurrentUser}>
             check current user
           </button>
-          {/* <button onClick={this.handleAddNotif}>add notif</button> */}
           <button onClick={this.handleRedirect}>Redirect</button>
           {this.state.signedIn ? (
             <Redirect exact to="/dashboard" />
           ) : (
             <div>Home</div>
-          )}
+          )} */}
         </div>
-      </>
+      </div>
     );
   }
 }

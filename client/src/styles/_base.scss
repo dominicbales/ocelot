@@ -1,9 +1,12 @@
-#root {height: 100%;}
+#root {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
 
 .task-rows {
-    margin-bottom: 8px;
-    padding: 8px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    background-color: white;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: white;
 }

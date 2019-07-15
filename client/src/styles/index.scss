@@ -1,13 +1,14 @@
 // Base styles
-@import './base';
+@import "./base";
 // Styles for the app  container
-@import './app/app';
+@import "./app/app";
 // Flex utl styles
-@import './flex';
+@import "./flex";
 // Components styles
-@import './sidebar/sidebar';
-@import './project/project';
-@import './productMenu/productMenu';
-@import './userbar/userbar';
-@import './modals/addProjectModal';
-@import './issues/issues';
+@import "./sidebar/sidebar";
+@import "./project/project";
+@import "./productMenu/productMenu";
+@import "./userbar/userbar";
+@import "./modals/addProjectModal";
+@import "./issues/issues";
+@import "./navbar/navbar";

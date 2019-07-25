@@ -8,14 +8,11 @@ export class HomeHeader extends Component {
   render() {
     return (
       <div
-        className="flex flex-justify-center flex-align-items-center"
+        className="flex flex-justify-center flex-align-items-center home-header-section"
         style={{ height: "100%" }}
       >
-        <div style={{ width: "60%", height: "60%" }} className="flex">
-          <div
-            className="flex flex-justify-center flex-column"
-            style={{ width: "50%", padding: "12px" }}
-          >
+        <div className="flex home-header-content-container">
+          <div className="flex flex-justify-center flex-column home-header-content">
             <h1>
               Build products without the need for multiple project management
               apps
@@ -32,8 +29,8 @@ export class HomeHeader extends Component {
               <Button>Learn more</Button>
             </div>
           </div>
-          <div style={{ width: "50%" }}>
-            <img style={{ width: "400px" }} src={productPic} />
+          <div className="home-header-img-container">
+            <img className="home-header-img" src={productPic} />
           </div>
         </div>
       </div>

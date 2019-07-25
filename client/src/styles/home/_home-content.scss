@@ -1,0 +1,25 @@
+.home-content-img-container {
+  width: 60%;
+}
+
+.home-content-list-p {
+  text-align: center;
+  width: 150px;
+}
+
+// Media queries
+@media only screen and (max-width: 450px) {
+  .home-content-img-container {
+    width: 100%;
+  }
+  .home-content-list-container {
+    flex-direction: column;
+  }
+  .home-content-list-h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .home-content-list-item {
+    margin-bottom: 12px;
+  }
+}

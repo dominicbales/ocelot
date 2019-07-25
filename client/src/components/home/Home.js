@@ -35,57 +35,19 @@ export class Home extends Component {
   //   };
   //   addNotif(user);
   // };
-  handleSignin = () => {
-    const user = {
-      email: "test6@test.com",
-      password: "123456"
-    };
-    this.props.signin(user);
-  };
-  handleCreateUser = async () => {
-    const user = {
-      email: "test6@test.com",
-      password: "123456",
-      username: "nothing"
-    };
-    const data = await axios.post(`${localURL}api/user/register`, user);
-    console.log("create data is:", data);
-  };
+
   handleCheckCurrentUser = async () => {
     const data = await axios.get(`${localURL}api/user/current`);
     console.log("user is:", data);
   };
-  handleSignout = () => {
-    this.props.signout();
-  };
 
-  handleAddProject = async () => {
-    const { user } = this.props;
-    const data = await axios.post(`${localURL}api/projects/${user._id}`);
-    console.log("added new project:", data);
-  };
   render() {
     return (
       <div style={{ backgroundColor: "#fefefe", height: "100%" }}>
         <Navbar />
         <HomeHeader />
         <HomeContent />
-        <div>
-          {/* <h1>data is {this.state.data.name}</h1>
-          <button onClick={this.handleAddProject}>Add new project</button>
-          <button onClick={this.handleCreateUser}>Create</button>
-          <button onClick={this.handleSignin}>signin</button>
-          <button onClick={this.handleSignout}>signout</button>
-          <button onClick={this.handleCheckCurrentUser}>
-            check current user
-          </button>
-          <button onClick={this.handleRedirect}>Redirect</button>
-          {this.state.signedIn ? (
-            <Redirect exact to="/dashboard" />
-          ) : (
-            <div>Home</div>
-          )} */}
-        </div>
+        <div />
       </div>
     );
   }

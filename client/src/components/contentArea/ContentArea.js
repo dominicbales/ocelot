@@ -10,6 +10,8 @@ import Profile from "../profile/Profile";
 import ViewAllTasks from "../task/Tasks";
 import Issues from "../issues/Issues";
 import Issue from "../issues/Issue";
+import Chat from "../chat/Chat";
+import ComingSoon from "../coming-soon/ComingSoon";
 
 export class ContentArea extends Component {
   state = {
@@ -41,6 +43,7 @@ export class ContentArea extends Component {
     } else if (activeMenu.includes("Issues")) {
       return <Issues activeMenu={activeMenu} activeProject={activeProject} />;
     } else if (activeMenu.includes("Chat")) {
+      return <Chat />;
     } else {
       return <Profile />;
     }
@@ -53,7 +56,7 @@ export class ContentArea extends Component {
     let projectKeys = null;
     // Checks to see if their are any keys within activeProject object
     if (activeProject) {
-      console.log("yest has projects");
+      console.log("yes has projects");
       projectKeys = Object.keys(activeProject);
     } else {
       console.log("doesnt have project");
@@ -72,7 +75,9 @@ export class ContentArea extends Component {
           <Switch>
             {projectKeys.length !== 0 && (
               <>
-                <Route path="/dashboard/task" component={ViewAllTasks} />
+                {/* <Route path="/dashboard/task" component={ViewAllTasks} /> */}
+                <Route path="/dashboard/task" component={ComingSoon} />
+                <Route path="/dashboard/coming-soon" component={ComingSoon} />
                 <Route exact path="/dashboard/issues" component={Issues} />
                 <Route exact path="/dashboard/issues/:id" component={Issue} />
               </>

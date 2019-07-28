@@ -13,10 +13,7 @@ export class HomeHeader extends Component {
       >
         <div className="flex home-header-content-container">
           <div className="flex flex-justify-center flex-column home-header-content">
-            <h1>
-              Build products without the need for multiple project management
-              apps
-            </h1>
+            <h1>Build products without the need for multiple apps</h1>
             <p>
               Ocelot lets you to keep track of projects issues, task and allows
               you to group chat with other developers that are on the project

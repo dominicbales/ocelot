@@ -75,8 +75,8 @@ export class ContentArea extends Component {
           <Switch>
             {projectKeys.length !== 0 && (
               <>
-                {/* <Route path="/dashboard/task" component={ViewAllTasks} /> */}
-                <Route path="/dashboard/task" component={ComingSoon} />
+                <Route path="/dashboard/task" component={ViewAllTasks} />
+                {/* <Route path="/dashboard/task" component={ComingSoon} /> */}
                 <Route path="/dashboard/coming-soon" component={ComingSoon} />
                 <Route exact path="/dashboard/issues" component={Issues} />
                 <Route exact path="/dashboard/issues/:id" component={Issue} />

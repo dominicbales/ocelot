@@ -3,7 +3,7 @@
 
 /server/node_modules
 /server/.env
-
+/server/config
 
 /.vscode
 note

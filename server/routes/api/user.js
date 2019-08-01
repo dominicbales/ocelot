@@ -33,7 +33,7 @@ router.post("/register", async (req, res, next) => {
         _id,
         username
       },
-      keys.SECRET_KEY
+      process.env.SECRET_KEY
     );
     return res.status(200).json({
       _id,

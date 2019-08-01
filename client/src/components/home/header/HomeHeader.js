@@ -9,7 +9,7 @@ export class HomeHeader extends Component {
     return (
       <div
         className="flex flex-justify-center flex-align-items-center home-header-section"
-        style={{ height: "100%" }}
+        style={{ height: "95%" }}
       >
         <div className="flex home-header-content-container">
           <div className="flex flex-justify-center flex-column home-header-content">

@@ -64,7 +64,7 @@ if (process.env.NODE_ENV === "production") {
 
 server.listen(PORT, () =>
   console.log(
-    "Running for my life on :3000",
+    "Running on :3000",
     path.join(__dirname, "../client", "dist", "index.html")
   )
 );

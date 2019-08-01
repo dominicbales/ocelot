@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+// const keys = require("../../config/keys");
 const passport = require("passport");
 // Middleware
 const { loginRequired } = require("../../middleware/auth");
@@ -84,7 +84,7 @@ router.post("/login", async (req, res, next) => {
           email,
           password
         },
-        keys.SECRET_KEY
+        process.env.SECRET_KEY
       );
       // send a cookie with jwt token
       // res.cookie('jwt',token);

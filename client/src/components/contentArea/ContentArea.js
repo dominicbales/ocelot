@@ -13,6 +13,7 @@ import Issue from "../issues/Issue";
 import Chat from "../chat/Chat";
 import ComingSoon from "../coming-soon/ComingSoon";
 import DashHome from "../dashboard/DashHome";
+import Invite from "../invite/Invite";
 
 export class ContentArea extends Component {
   state = {
@@ -36,19 +37,19 @@ export class ContentArea extends Component {
     this.setState({ activeMenu: menu });
   };
 
-  handleRouteChange = () => {
-    const { activeMenu } = this.state;
-    const { activeProject } = this.props;
-    if (activeMenu.includes("Tasks")) {
-      return <ViewAllTasks />;
-    } else if (activeMenu.includes("Issues")) {
-      return <Issues activeMenu={activeMenu} activeProject={activeProject} />;
-    } else if (activeMenu.includes("Chat")) {
-      return <Chat />;
-    } else {
-      return <Profile />;
-    }
-  };
+  // handleRouteChange = () => {
+  //   const { activeMenu } = this.state;
+  //   const { activeProject } = this.props;
+  //   if (activeMenu.includes("Tasks")) {
+  //     return <ViewAllTasks />;
+  //   } else if (activeMenu.includes("Issues")) {
+  //     return <Issues activeMenu={activeMenu} activeProject={activeProject} />;
+  //   } else if (activeMenu.includes("Chat")) {
+  //     return <Chat />;
+  //   } else {
+  //     return <Profile />;
+  //   }
+  // };
 
   render() {
     const { activeMenu } = this.state;
@@ -77,6 +78,7 @@ export class ContentArea extends Component {
             {projectKeys.length !== 0 ? (
               <>
                 <Route path="/dashboard/task" component={ViewAllTasks} />
+                <Route path="/dashboard/invite" component={Invite} />
                 {/* <Route path="/dashboard/task" component={ComingSoon} /> */}
                 <Route path="/dashboard/coming-soon" component={ComingSoon} />
                 <Route exact path="/dashboard/issues" component={Issues} />

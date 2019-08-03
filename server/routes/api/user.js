@@ -19,6 +19,21 @@ const { User } = require("../../models/index");
 //@access   public
 router.get("/test", (req, res) => res.json({ msg: "Users works" }));
 
+//@route    GET /api/user/search/:name
+//@desc     search for user by name
+//@access   public
+router.get("/search/:name", async (req, res) => {
+  console.log("user name:", req.params.name);
+  let user = await User.find({
+    username: { $regex: "^" + req.params.name }
+  });
+  const filterArray = user.map(val => {
+    let { email, username, _id } = val;
+    return { email, username, _id };
+  });
+  return res.status(200).json(filterArray);
+});
+
 //@route    GET /api/user/register
 //@desc     register users
 //@access   public

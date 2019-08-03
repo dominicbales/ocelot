@@ -12,6 +12,7 @@ import Issues from "../issues/Issues";
 import Issue from "../issues/Issue";
 import Chat from "../chat/Chat";
 import ComingSoon from "../coming-soon/ComingSoon";
+import DashHome from "../dashboard/DashHome";
 
 export class ContentArea extends Component {
   state = {
@@ -73,7 +74,7 @@ export class ContentArea extends Component {
         <div className="flex flex-column flex-1">
           <Userbar />
           <Switch>
-            {projectKeys.length !== 0 && (
+            {projectKeys.length !== 0 ? (
               <>
                 <Route path="/dashboard/task" component={ViewAllTasks} />
                 {/* <Route path="/dashboard/task" component={ComingSoon} /> */}
@@ -81,6 +82,8 @@ export class ContentArea extends Component {
                 <Route exact path="/dashboard/issues" component={Issues} />
                 <Route exact path="/dashboard/issues/:id" component={Issue} />
               </>
+            ) : (
+              <Route exact path="/dashboard" component={DashHome} />
             )}
           </Switch>
         </div>

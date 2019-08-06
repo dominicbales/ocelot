@@ -75,6 +75,7 @@ export class ContentArea extends Component {
         <div className="flex flex-column flex-1">
           <Userbar />
           <Switch>
+            <Route path="/dashboard/profile" component={Profile} />
             {projectKeys.length !== 0 ? (
               <>
                 <Route path="/dashboard/task" component={ViewAllTasks} />

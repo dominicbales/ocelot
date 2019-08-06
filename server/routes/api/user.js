@@ -23,7 +23,6 @@ router.get("/test", (req, res) => res.json({ msg: "Users works" }));
 //@desc     search for user by name
 //@access   public
 router.get("/search/:name", async (req, res) => {
-  console.log("user name:", req.params.name);
   let user = await User.find({
     username: { $regex: "^" + req.params.name }
   });
@@ -130,8 +129,42 @@ router.get(
     res.json({ msg: "Success passport" });
   }
 );
-// router.get('/current', loginRequired, (req, res) => {
-//     res.json({msg: 'Success'});
-// });
+
+//@route    POST /api/user/invite/:projectId
+//@desc     invite user to project
+//@access   public
+router.post("/invite/:projectId", async (req, res) => {
+  // Loop through array of users to send invites to
+  for (let k = 0; k < req.body.length; k++) {
+    let user = await User.findOne({
+      email: req.body[k].email
+    });
+
+    if (user) {
+      // Check if user is already in project list
+      for (let i = 0; i < user.projects.length; i++) {
+        if (user.projects[i] == req.params.projectId) {
+          return res.json({
+            msg: `User: ${user.username} is already in this project`
+          });
+        }
+      }
+      // Check if user has already been invited to the project
+      for (let i = 0; i < user.invitedNotification.length; i++) {
+        if (user.invitedNotification[i]._id == req.params.projectId) {
+          return res.json({
+            msg: `User: ${
+              user.username
+            } has already been invited to this project`
+          });
+        }
+      }
+      // Add project to users invite
+      user.invitedNotification.push(req.params.projectId);
+      user.save();
+      res.status(200).json({ msg: "Invites have been sent!" });
+    }
+  }
+});
 
 module.exports = router;

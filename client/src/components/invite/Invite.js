@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import { Dropdown, Button } from "semantic-ui-react";
 import { localURL } from "../../../api";
 
@@ -28,8 +29,15 @@ export class Invite extends Component {
     console.log("adding to pro:", invitedUsers);
     this.setState({ invitedUser: invitedUsers });
   };
-  handleSendInvite = () => {
+  handleSendInvite = async () => {
     console.log("inviting users:", this.state.invitedUser);
+    console.log("current pro:", this.props.currentProject);
+
+    const result = await axios.post(
+      `${localURL}api/user/invite/${this.props.currentProject._id}`,
+      this.state.invitedUser
+    );
+    console.log("result:", result);
   };
   render() {
     return (
@@ -52,4 +60,11 @@ export class Invite extends Component {
   }
 }
 
-export default Invite;
+const mapStateToProps = state => ({
+  currentProject: state.Project.activeProject
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(Invite);

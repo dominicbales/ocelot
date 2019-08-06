@@ -36,9 +36,9 @@ export class ProjectMenu extends Component {
               <Menu.Item
                 as={NavLink}
                 to="/dashboard/invite"
-                name="Send Invite"
-                active={activeMenu === "Send Invite"}
-                onClick={() => this.props.handleActiveMenu("Send Invite")}
+                name="Invite"
+                active={activeMenu === "Invite"}
+                onClick={() => this.props.handleActiveMenu("Invite")}
               />
             </Menu.Menu>
           </Menu.Item>

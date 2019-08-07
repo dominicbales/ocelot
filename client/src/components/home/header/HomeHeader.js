@@ -19,11 +19,12 @@ export class HomeHeader extends Component {
               you to group chat with other developers that are on the project
             </p>
             <div>
-              <NavLink to="/signup">
-                <Button>Signup</Button>
+              <NavLink to="/signin">
+                <Button>Sign in</Button>
               </NavLink>
-
-              <Button>Learn more</Button>
+              <NavLink to="/signup">
+                <Button>Sign up</Button>
+              </NavLink>
             </div>
           </div>
           <div className="home-header-img-container">

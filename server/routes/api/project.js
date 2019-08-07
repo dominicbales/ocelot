@@ -42,7 +42,7 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
-      //finding a user
+      //finding project
       let projects = await Project.find({ owner: req.params.id }, function(
         err,
         project
@@ -68,7 +68,7 @@ router.get(
   async (req, res, next) => {
     console.log("fetch Project ID:", req.params.id);
     try {
-      //finding a user
+      //finding project
       let projects = await Project.findOne({ _id: req.params.id }, function(
         err,
         project

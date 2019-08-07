@@ -7,7 +7,6 @@ import { Menu, Icon } from "semantic-ui-react";
 import { signout } from "../../redux/actions/user";
 
 export class ProjectMenu extends Component {
-  state = {};
   handleItemClick = (event, value) => {
     switch (value.name) {
       case "Signout":
@@ -19,7 +18,6 @@ export class ProjectMenu extends Component {
     this.setState({ activeItem: name });
   };
   render() {
-    console.log("projectMenu render");
     const { activeMenu } = this.props;
     return (
       <div style={{ minWidth: "150px" }}>
@@ -30,16 +28,16 @@ export class ProjectMenu extends Component {
               <Menu.Item
                 as={NavLink}
                 to="/dashboard/coming-soon"
-                name={this.props.name ? this.props.name : "ProjectN"}
+                name={this.props.name ? this.props.name : "No Project Selected"}
                 active={activeMenu === "projectName"}
                 onClick={() => this.props.handleActiveMenu("projectName")}
               />
               <Menu.Item
                 as={NavLink}
-                to="/dashboard/coming-soon"
-                name="Send Invite"
-                active={activeMenu === "Send Invite"}
-                onClick={() => this.props.handleActiveMenu("Send Invite")}
+                to="/dashboard/invite"
+                name="Invite"
+                active={activeMenu === "Invite"}
+                onClick={() => this.props.handleActiveMenu("Invite")}
               />
             </Menu.Menu>
           </Menu.Item>

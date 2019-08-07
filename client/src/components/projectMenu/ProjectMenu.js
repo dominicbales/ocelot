@@ -18,7 +18,6 @@ export class ProjectMenu extends Component {
     this.setState({ activeItem: name });
   };
   render() {
-    console.log("projectMenu render");
     const { activeMenu } = this.props;
     return (
       <div style={{ minWidth: "150px" }}>
@@ -29,7 +28,7 @@ export class ProjectMenu extends Component {
               <Menu.Item
                 as={NavLink}
                 to="/dashboard/coming-soon"
-                name={this.props.name ? this.props.name : "ProjectN"}
+                name={this.props.name ? this.props.name : "No Project Selected"}
                 active={activeMenu === "projectName"}
                 onClick={() => this.props.handleActiveMenu("projectName")}
               />

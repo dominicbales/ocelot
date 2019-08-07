@@ -54,15 +54,10 @@ export class ContentArea extends Component {
   render() {
     const { activeMenu } = this.state;
     const { activeProject } = this.props;
-    console.log("active project:", activeProject);
-    let projectKeys = null;
+    let projectKeys = 0;
     // Checks to see if their are any keys within activeProject object
     if (activeProject) {
-      console.log("yes has projects");
       projectKeys = Object.keys(activeProject);
-    } else {
-      console.log("doesnt have project");
-      projectKeys = 0;
     }
 
     return (

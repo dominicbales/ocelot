@@ -130,10 +130,10 @@ router.get(
   }
 );
 
-//@route    POST /api/user/invite/:projectId
+//@route    POST /api/user/invite/:projectId/user/:userId
 //@desc     invite user to project
 //@access   public
-router.post("/invite/:projectId", async (req, res) => {
+router.post("/invite/:projectId/user/:userId", async (req, res) => {
   // Loop through array of users to send invites to
   for (let k = 0; k < req.body.length; k++) {
     let user = await User.findOne({
@@ -151,7 +151,7 @@ router.post("/invite/:projectId", async (req, res) => {
       }
       // Check if user has already been invited to the project
       for (let i = 0; i < user.invitedNotification.length; i++) {
-        if (user.invitedNotification[i]._id == req.params.projectId) {
+        if (user.invitedNotification[i].projectId == req.params.projectId) {
           return res.json({
             msg: `User: ${
               user.username
@@ -160,11 +160,31 @@ router.post("/invite/:projectId", async (req, res) => {
         }
       }
       // Add project to users invite
-      user.invitedNotification.push(req.params.projectId);
+      user.invitedNotification.push({
+        projectId: req.params.projectId,
+        inviteSenderId: req.params.userId
+      });
       user.save();
       res.status(200).json({ msg: "Invites have been sent!" });
     }
   }
+});
+
+//@route    POST /api/user/invite/notification/:userId
+//@desc     fetch user invite notification
+//@access   public
+router.get("/invite/notification/:userId", async (req, res) => {
+  console.log("inside fetch invites");
+  console.log("projectID:", req.params.projectId);
+  console.log("userID:", req.params.userId);
+  let user = await User.findOne({
+    _id: req.params.userId
+  });
+  // const filterArray = user.invitedNotification.filter(val => {
+  //   return val.projectId == req.params.projectId;
+  // });
+  // console.log("filter array:", filterArray);
+  res.json(user.invitedNotification);
 });
 
 module.exports = router;

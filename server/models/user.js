@@ -25,7 +25,8 @@ const userSchema = new mongoose.Schema(
     },
     invitedNotification: [
       {
-        projectId: { type: mongoose.Types.ObjectId },
+        inviteSenderId: mongoose.Types.ObjectId,
+        projectId: mongoose.Types.ObjectId,
         createdAt: { type: Date, default: Date.now }
       }
     ],

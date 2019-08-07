@@ -23,21 +23,18 @@ export class Invite extends Component {
     const { searchedUser } = this.state;
     let invitedUsers = [];
     for (let i = 0; i < data.value.length; i++) {
-      //   console.log("ayy:", searchedUser[data.value[i]]);
       invitedUsers.push(searchedUser[data.value[i]]);
     }
-    console.log("adding to pro:", invitedUsers);
     this.setState({ invitedUser: invitedUsers });
   };
   handleSendInvite = async () => {
-    console.log("inviting users:", this.state.invitedUser);
-    console.log("current pro:", this.props.currentProject);
-
+    const { user } = this.props;
     const result = await axios.post(
-      `${localURL}api/user/invite/${this.props.currentProject._id}`,
+      `${localURL}api/user/invite/${this.props.currentProject._id}/user/${
+        user._id
+      }`,
       this.state.invitedUser
     );
-    console.log("result:", result);
   };
   render() {
     return (
@@ -46,7 +43,7 @@ export class Invite extends Component {
         className="flex flex-justify-center flex-align-items-center"
       >
         <Dropdown
-          placeholder="State"
+          placeholder="Search for user"
           multiple
           search
           selection
@@ -61,7 +58,8 @@ export class Invite extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentProject: state.Project.activeProject
+  currentProject: state.Project.activeProject,
+  user: state.User.currentUser
 });
 
 export default connect(

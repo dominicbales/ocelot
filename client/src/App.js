@@ -23,11 +23,9 @@ import "./styles/index.scss";
 
 //Check for token
 if (localStorage.jwtToken) {
-  console.log("inside check user");
   setAuthToken(localStorage.jwtToken);
   //Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
-  console.log("decoded:", decoded);
   //Set user and is Authenticated
   store.dispatch(setUser(decoded));
   //Check for expire token
@@ -37,7 +35,7 @@ if (localStorage.jwtToken) {
     store.dispatch(signout());
     //Todo: Clear current Profile
     //Redirect to Login
-    window.location.href = "/login";
+    window.location.href = "/signin";
   }
 }
 

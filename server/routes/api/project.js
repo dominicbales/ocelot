@@ -8,21 +8,28 @@ const passport = require("passport");
 const { User, Project } = require("../../models/index");
 
 //@route    POST /api/projects/:id
-//@desc     fetches users projects
+//@desc     create project
 //@access   private
 router.post(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
-    console.log("post project:", req.body);
     try {
       //finding a user
       let user = await User.findOne({ _id: req.params.id });
       if (user) {
+        // generate random number so project icon will be different
+        // when created
+        let randomNum = Math.floor(Math.random() * 50);
+        const avatar = gravatar.url(user._id + randomNum, {
+          protocol: "https",
+          d: "identicon" //Default
+        });
         const newProject = new Project({
           name: req.body.name,
           privacy: req.body.privacy,
-          owner: req.params.id
+          owner: req.params.id,
+          projectImg: avatar
         });
         user.projects.push(newProject._id);
         user.save();

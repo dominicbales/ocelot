@@ -1,23 +1,29 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const projectSchema = new mongoose.Schema({
+const projectSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
+      type: String
     },
-    notifications: [{
-        type: String,
-    }],
-    invited: [{
+    notifications: [
+      {
+        type: String
+      }
+    ],
+    invited: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
+        ref: "User"
+      }
+    ],
     owner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
     },
     privacy: {
-        type: String
+      type: String
     },
+    projectImg: { type: String },
     // chatrooms: [{
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'Chatroom'
@@ -26,13 +32,16 @@ const projectSchema = new mongoose.Schema({
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'Task'
     // }],
-    issues: [{
+    issues: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Issue'
-    }]
-},  {
+        ref: "Issue"
+      }
+    ]
+  },
+  {
     timestamps: true
-    }
+  }
 );
 
 // messageSchema.pre('remove', async function(next){
@@ -50,5 +59,5 @@ const projectSchema = new mongoose.Schema({
 //     }
 // });
 
-const Project = mongoose.model('Project', projectSchema);
+const Project = mongoose.model("Project", projectSchema);
 module.exports = Project;

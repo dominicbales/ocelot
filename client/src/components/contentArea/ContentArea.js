@@ -19,9 +19,7 @@ export class ContentArea extends Component {
   state = {
     activeMenu: ""
   };
-  // componentDidMount() {
-  //     console.log('active project:' , this.props.activeProject)
-  // }
+
   shouldComponentUpdate(prevProps, prevState) {
     if (
       prevProps.activeProject !== this.props.activeProject ||
@@ -36,20 +34,6 @@ export class ContentArea extends Component {
   handleActiveMenu = menu => {
     this.setState({ activeMenu: menu });
   };
-
-  // handleRouteChange = () => {
-  //   const { activeMenu } = this.state;
-  //   const { activeProject } = this.props;
-  //   if (activeMenu.includes("Tasks")) {
-  //     return <ViewAllTasks />;
-  //   } else if (activeMenu.includes("Issues")) {
-  //     return <Issues activeMenu={activeMenu} activeProject={activeProject} />;
-  //   } else if (activeMenu.includes("Chat")) {
-  //     return <Chat />;
-  //   } else {
-  //     return <Profile />;
-  //   }
-  // };
 
   render() {
     const { activeMenu } = this.state;

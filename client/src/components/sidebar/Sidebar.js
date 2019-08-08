@@ -25,7 +25,6 @@ export class Sidebar extends Component {
 
   handleProjectClick = async id => {
     const { user } = this.props;
-    console.log("user is:", this.props.user._id);
     await this.props.fetchProject(id);
   };
   render() {
@@ -34,16 +33,13 @@ export class Sidebar extends Component {
     const projectList = projects.map(val => {
       return (
         <div key={val._id}>
-          <Popup
-            content={val.name}
-            trigger={
-              <Button
-                onClick={() => this.handleProjectClick(val._id)}
-                className="sidebar-project-btn"
-                circular
-                icon="plus"
-              />
-            }
+          {/* <img src={val.projectImg} /> */}
+          <Button
+            style={{ background: `url(${val.projectImg})` }}
+            onClick={() => this.handleProjectClick(val._id)}
+            className="sidebar-project-btn"
+            circular
+            icon="plus"
           />
         </div>
       );

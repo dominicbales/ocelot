@@ -44,6 +44,7 @@ export const signin = data => async dispatch => {
   setAuthToken(token);
   //Decode token to get user data
   const decoded = decode(token);
+  console.log("decode:", decoded);
   //Set current user
   dispatch(setUser(decoded));
 };

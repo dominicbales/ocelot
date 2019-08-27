@@ -25,7 +25,11 @@ const userSchema = new mongoose.Schema(
     },
     invitedNotification: [
       {
+        notificationType: { type: String },
         inviteSenderId: mongoose.Types.ObjectId,
+        inviteSenderUsername: { type: String },
+        inviteSenderImage: { type: String },
+        projectName: { type: String },
         projectId: mongoose.Types.ObjectId,
         createdAt: { type: Date, default: Date.now }
       }

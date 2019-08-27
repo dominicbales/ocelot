@@ -40,7 +40,12 @@ router.post("/register", async (req, res, next) => {
   try {
     //create a user
     let user = await User.create(req.body);
-    let { _id, username } = user;
+    const avatar = gravatar.url(req.body.email, {
+      d: "mp" //Default
+    });
+    user.profileImageUrl = avatar;
+    user.save();
+    let { _id, username, profileImageUrl } = user;
     //create a token (signing a token)
     let token = jwt.sign(
       {
@@ -69,11 +74,6 @@ router.post("/register", async (req, res, next) => {
       message: err.message
     });
   }
-  //             const avatar = gravatar.url(req.body.email, {
-  //                 s: '200', //size
-  //                 r: 'pg',//rated PG
-  //                 d: "mm"//Default
-  //             })
 });
 
 //@route    GET /api/user/login
@@ -85,7 +85,7 @@ router.post("/login", async (req, res, next) => {
     let user = await User.findOne({
       email: req.body.email
     });
-    let { _id, username, projects, email, password } = user;
+    let { _id, username, projects, email, password, profileImageUrl } = user;
     //checking if their password matches what was sent to the server]
     let isMatch = await user.comparePassword(req.body.password);
     //if it all matches
@@ -96,7 +96,8 @@ router.post("/login", async (req, res, next) => {
           username,
           projects,
           email,
-          password
+          password,
+          profileImageUrl
         },
         process.env.SECRET_KEY
       );
@@ -134,12 +135,13 @@ router.get(
 //@desc     invite user to project
 //@access   public
 router.post("/invite/:projectId/user/:userId", async (req, res) => {
+  console.log("req body:", req.body);
   // Loop through array of users to send invites to
-  for (let k = 0; k < req.body.length; k++) {
+  for (let k = 0; k < req.body.invitedUsers.length; k++) {
     let user = await User.findOne({
-      email: req.body[k].email
+      email: req.body.invitedUsers[k].email
     });
-
+    console.log("user:", user);
     if (user) {
       // Check if user is already in project list
       for (let i = 0; i < user.projects.length; i++) {
@@ -161,8 +163,12 @@ router.post("/invite/:projectId/user/:userId", async (req, res) => {
       }
       // Add project to users invite
       user.invitedNotification.push({
+        notificationType: "invite",
         projectId: req.params.projectId,
-        inviteSenderId: req.params.userId
+        inviteSenderId: req.params.userId,
+        inviteSenderUsername: req.body.inviteSenderUsername,
+        inviteSenderImage: req.body.inviteSenderImage,
+        projectName: req.body.projectName
       });
       user.save();
       res.status(200).json({ msg: "Invites have been sent!" });
@@ -174,9 +180,6 @@ router.post("/invite/:projectId/user/:userId", async (req, res) => {
 //@desc     fetch user invite notification
 //@access   public
 router.get("/invite/notification/:userId", async (req, res) => {
-  console.log("inside fetch invites");
-  console.log("projectID:", req.params.projectId);
-  console.log("userID:", req.params.userId);
   let user = await User.findOne({
     _id: req.params.userId
   });

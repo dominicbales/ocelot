@@ -28,12 +28,18 @@ export class Invite extends Component {
     this.setState({ invitedUser: invitedUsers });
   };
   handleSendInvite = async () => {
-    const { user } = this.props;
+    const { user, currentProject } = this.props;
+    console.log("currentpro:", currentProject);
+    console.log("user:", user);
+    const payloadObject = {
+      invitedUsers: this.state.invitedUser,
+      projectName: currentProject.name,
+      inviteSenderUsername: user.username,
+      inviteSenderImage: user.profileImageUrl
+    };
     const result = await axios.post(
-      `${localURL}api/user/invite/${this.props.currentProject._id}/user/${
-        user._id
-      }`,
-      this.state.invitedUser
+      `${localURL}api/user/invite/${currentProject._id}/user/${user._id}`,
+      payloadObject
     );
   };
   render() {

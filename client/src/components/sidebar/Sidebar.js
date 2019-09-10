@@ -17,9 +17,6 @@ export class Sidebar extends Component {
   };
 
   handleOpenModal = () => {
-    // const {user, fetchProjects, addProjects} = this.props;
-    // addProjects(user._id)
-    // fetchProjects(user._id)
     this.setState({ open: !this.state.open });
   };
 

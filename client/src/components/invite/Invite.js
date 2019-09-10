@@ -29,8 +29,6 @@ export class Invite extends Component {
   };
   handleSendInvite = async () => {
     const { user, currentProject } = this.props;
-    console.log("currentpro:", currentProject);
-    console.log("user:", user);
     const payloadObject = {
       invitedUsers: this.state.invitedUser,
       projectName: currentProject.name,

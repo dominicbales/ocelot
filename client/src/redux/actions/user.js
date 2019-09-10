@@ -29,7 +29,7 @@ export const setInviteNotification = data => {
 
 export const fetchUserInviteNotification = userId => async dispatch => {
   const result = await axios.get(
-    `${localURL}api/user/invite/notification/${userId}`
+    `${localURL}api/user/invite/user/${userId}/notification`
   );
   dispatch(setInviteNotification(result.data));
 };

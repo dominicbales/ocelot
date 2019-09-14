@@ -42,7 +42,7 @@ router.post(
 );
 
 //@route    GET /api/projects/:id
-//@desc     fetches users projects
+//@desc     fetches users projects by ownership
 //@access   private
 router.get(
   "/:id",
@@ -53,13 +53,35 @@ router.get(
       let projects = await Project.find({ owner: req.params.id }, function(
         err,
         project
-      ) {
-        // console.log('inside find projects:', project)
-      });
+      ) {});
       if (projects) {
         res.json(projects);
       }
-      // console.log("projects is: ", projects);
+    } catch (err) {
+      return next({ status: 400, message: "Cant find projects" });
+    }
+  }
+);
+
+//@route    GET /api/projects/by/user/:id
+//@desc     fetches users projects by user projects array
+//@access   private
+router.get(
+  "/by/user/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res, next) => {
+    try {
+      // Find user
+      let user = await User.findOne({ _id: req.params.id });
+      let projectsArray = [];
+      let projectHolder = {};
+
+      // find projects that are stored in user projects array
+      for (let i = 0; i < user.projects.length; i++) {
+        projectHolder = await Project.findOne({ _id: user.projects[i] });
+        projectsArray.push(projectHolder);
+      }
+      res.json(projectsArray);
     } catch (err) {
       return next({ status: 400, message: "Cant find projects" });
     }

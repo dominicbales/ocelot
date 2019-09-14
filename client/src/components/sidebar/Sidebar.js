@@ -4,7 +4,7 @@ import { Icon, Button, Card, Popup, Modal } from "semantic-ui-react";
 // Actions
 import {
   addProjects,
-  fetchProjects,
+  fetchProjectsByOwnership,
   fetchProject
 } from "../../redux/actions/project";
 
@@ -68,5 +68,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addProjects, fetchProjects, fetchProject }
+  { addProjects, fetchProjectsByOwnership, fetchProject }
 )(Sidebar);

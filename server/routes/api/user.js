@@ -12,7 +12,7 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 //Load User model
-const { User } = require("../../models/index");
+const { User, Project } = require("../../models/index");
 
 //@route    GET /api/user/test
 //@desc     test users routes
@@ -207,5 +207,24 @@ router.delete(
     res.json(user.invitedNotification);
   }
 );
+
+//@route    POST /api/user/:userId/project/:projectId
+//@desc     add user to project
+//@access   public
+router.post("/invite/:userId/project/:projectId", async (req, res) => {
+  // find both user and project
+  let user = await User.findOne({
+    _id: req.params.userId
+  });
+  let project = await Project.findOne({
+    _id: req.params.projectId
+  });
+
+  project.users.push(user._id);
+  user.projects.push(req.params.projectId);
+  project.save();
+  user.save();
+  res.json({ msg: "User added to project" });
+});
 
 module.exports = router;

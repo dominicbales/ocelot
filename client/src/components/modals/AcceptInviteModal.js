@@ -4,6 +4,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Button, Card, Image } from "semantic-ui-react";
 
+import { fetchProjectsByUserArray } from "../../redux/actions/project";
 import { setInviteNotification } from "../../redux/actions/user";
 
 import { localURL } from "../../../api";
@@ -13,12 +14,19 @@ const AcceptInviteModal = ({
   hide,
   user,
   currentUser,
-  setInviteNotification
+  setInviteNotification,
+  fetchProjectsByUserArray
 }) => {
   const handleApproved = async () => {
+    console.log("user:", user);
+    const userAddedToProject = await axios.post(
+      `${localURL}api/user/invite/${currentUser._id}/project/${user.projectId}`
+    );
+    console.log("user added to project:", userAddedToProject);
     const result = await axios.delete(
       `${localURL}api/user/invite/${currentUser._id}/notification/${user._id}`
     );
+    await fetchProjectsByUserArray(currentUser._id);
     setInviteNotification(result.data);
     hide();
   };
@@ -79,5 +87,5 @@ const AcceptInviteModal = ({
 
 export default connect(
   null,
-  { setInviteNotification }
+  { setInviteNotification, fetchProjectsByUserArray }
 )(AcceptInviteModal);

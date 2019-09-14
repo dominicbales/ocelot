@@ -12,12 +12,18 @@ export const setActiveProject = data => ({
   payload: data
 });
 
-// Fetch multiple project
-export const fetchProjects = id => async dispatch => {
+// Fetch multiple project by ownership
+export const fetchProjectsByOwnership = id => async dispatch => {
   const result = await axios.get(`${localURL}api/projects/${id}`);
   dispatch(setProjects(result.data));
   // auto sets activeproject, remove when no longer needed
   // dispatch(setActiveProject(result.data[0]))
+};
+
+//Fetch multiple projects by user array
+export const fetchProjectsByUserArray = id => async dispatch => {
+  const result = await axios.get(`${localURL}api/projects/by/user/${id}`);
+  dispatch(setProjects(result.data));
 };
 
 // fetch one project

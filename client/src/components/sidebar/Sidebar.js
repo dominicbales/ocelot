@@ -4,7 +4,7 @@ import { Icon, Button, Card, Popup, Modal } from "semantic-ui-react";
 // Actions
 import {
   addProjects,
-  fetchProjects,
+  fetchProjectsByOwnership,
   fetchProject
 } from "../../redux/actions/project";
 
@@ -17,9 +17,6 @@ export class Sidebar extends Component {
   };
 
   handleOpenModal = () => {
-    // const {user, fetchProjects, addProjects} = this.props;
-    // addProjects(user._id)
-    // fetchProjects(user._id)
     this.setState({ open: !this.state.open });
   };
 
@@ -71,5 +68,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addProjects, fetchProjects, fetchProject }
+  { addProjects, fetchProjectsByOwnership, fetchProject }
 )(Sidebar);

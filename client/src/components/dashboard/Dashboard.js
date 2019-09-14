@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // Actions
-import { fetchProjects } from "../../redux/actions/project";
+import { fetchProjectsByUserArray } from "../../redux/actions/project";
 import { fetchUserInviteNotification } from "../../redux/actions/user";
 // Components
 import Sidebar from "../sidebar/Sidebar";
@@ -11,8 +11,12 @@ export class Dashboard extends Component {
   state = {};
 
   async componentDidMount() {
-    const { user, fetchProjects, fetchUserInviteNotification } = this.props;
-    await fetchProjects(user._id);
+    const {
+      user,
+      fetchProjectsByUserArray,
+      fetchUserInviteNotification
+    } = this.props;
+    await fetchProjectsByUserArray(user._id);
     await fetchUserInviteNotification(user._id);
   }
 
@@ -32,5 +36,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchProjects, fetchUserInviteNotification }
+  { fetchProjectsByUserArray, fetchUserInviteNotification }
 )(Dashboard);

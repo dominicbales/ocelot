@@ -12,7 +12,7 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 //Load User model
-const { User } = require("../../models/index");
+const { User, Project } = require("../../models/index");
 
 //@route    GET /api/user/test
 //@desc     test users routes
@@ -155,9 +155,7 @@ router.post("/invite/:projectId/user/:userId", async (req, res) => {
       for (let i = 0; i < user.invitedNotification.length; i++) {
         if (user.invitedNotification[i].projectId == req.params.projectId) {
           return res.json({
-            msg: `User: ${
-              user.username
-            } has already been invited to this project`
+            msg: `User: ${user.username} has already been invited to this project`
           });
         }
       }
@@ -176,10 +174,10 @@ router.post("/invite/:projectId/user/:userId", async (req, res) => {
   }
 });
 
-//@route    POST /api/user/invite/notification/:userId
+//@route    GET /api/user/invite/user/:userId/notification
 //@desc     fetch user invite notification
 //@access   public
-router.get("/invite/notification/:userId", async (req, res) => {
+router.get("/invite/user/:userId/notification", async (req, res) => {
   let user = await User.findOne({
     _id: req.params.userId
   });
@@ -188,6 +186,45 @@ router.get("/invite/notification/:userId", async (req, res) => {
   // });
   // console.log("filter array:", filterArray);
   res.json(user.invitedNotification);
+});
+
+//@route    DELETE /api/user/:userId/notification/:notificationId
+//@desc     remove notification from user
+//@access   public
+router.delete(
+  "/invite/:userId/notification/:notificationId",
+  async (req, res) => {
+    let user = await User.findOne({
+      _id: req.params.userId
+    });
+    // console.log("Inside remove notification:", user);
+    const filterArray = user.invitedNotification.filter(val => {
+      return val._id != req.params.notificationId;
+    });
+    // console.log("filter array:", filterArray);
+    user.invitedNotification = filterArray;
+    user.save();
+    res.json(user.invitedNotification);
+  }
+);
+
+//@route    POST /api/user/:userId/project/:projectId
+//@desc     add user to project
+//@access   public
+router.post("/invite/:userId/project/:projectId", async (req, res) => {
+  // find both user and project
+  let user = await User.findOne({
+    _id: req.params.userId
+  });
+  let project = await Project.findOne({
+    _id: req.params.projectId
+  });
+
+  project.users.push(user._id);
+  user.projects.push(req.params.projectId);
+  project.save();
+  user.save();
+  res.json({ msg: "User added to project" });
 });
 
 module.exports = router;

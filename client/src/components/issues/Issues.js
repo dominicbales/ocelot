@@ -87,6 +87,8 @@ export class Issues extends Component {
       });
     }
 
+    console.log("issues totalpages:", issues);
+
     return (
       <div
         style={{ overflowY: "auto" }}
@@ -116,11 +118,14 @@ export class Issues extends Component {
           </Table.Header>
           <Table.Body>{issuesList && issuesList}</Table.Body>
         </Table>
-        <Pagination
-          onPageChange={this.handlePageChange}
-          defaultActivePage={1}
-          totalPages={issues ? issues.totalPages : 0}
-        />
+        {issues.totalPages > 1 ? (
+          <Pagination
+            onPageChange={this.handlePageChange}
+            defaultActivePage={1}
+            totalPages={issues.totalPages}
+          />
+        ) : null}
+
         {extend && (
           <AddIssueModal
             project={project}

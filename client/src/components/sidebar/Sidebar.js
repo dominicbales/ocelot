@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { Icon, Button, Card, Popup, Modal } from "semantic-ui-react";
 // Actions
 import {
@@ -21,8 +22,14 @@ export class Sidebar extends Component {
   };
 
   handleProjectClick = async id => {
-    const { user } = this.props;
+    console.log("clicked project: $", this.props);
+
+    const { user, location, history } = this.props;
     await this.props.fetchProject(id);
+    if (location.pathname !== "/dashboard") {
+      console.log("inside push");
+      history.push("/dashboard");
+    }
   };
   render() {
     const { open } = this.state;
@@ -36,7 +43,6 @@ export class Sidebar extends Component {
             onClick={() => this.handleProjectClick(val._id)}
             className="sidebar-project-btn"
             circular
-            icon="plus"
           />
         </div>
       );
@@ -66,7 +72,9 @@ const mapStateToProps = state => ({
   projects: state.Project.projects
 });
 
-export default connect(
-  mapStateToProps,
-  { addProjects, fetchProjectsByOwnership, fetchProject }
-)(Sidebar);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { addProjects, fetchProjectsByOwnership, fetchProject }
+  )(Sidebar)
+);

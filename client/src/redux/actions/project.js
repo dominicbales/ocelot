@@ -1,4 +1,4 @@
-import { SET_PROJECTS, SET_ACTIVE_PROJECT } from "../types";
+import { SET_PROJECTS, SET_ACTIVE_PROJECT, SET_PROJECT_BOARDS } from "../types";
 import axios from "axios";
 import { localURL } from "../../../api";
 
@@ -11,6 +11,16 @@ export const setActiveProject = data => ({
   type: SET_ACTIVE_PROJECT,
   payload: data
 });
+
+export const setProjectBoards = data => ({
+  type: SET_PROJECT_BOARDS,
+  payload: data
+});
+
+export const fetchProjectBoards = projectId => async dispatch => {
+  const result = await axios.get(`${localURL}api/boards/project/${projectId}`);
+  dispatch(setProjectBoards(result.data));
+};
 
 // Fetch multiple project by ownership
 export const fetchProjectsByOwnership = id => async dispatch => {

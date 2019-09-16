@@ -7,7 +7,8 @@ import Project from "../project/Project";
 import ProjectMenu from "../projectMenu/ProjectMenu";
 import Userbar from "../userbar/Userbar";
 import Profile from "../profile/Profile";
-import ViewAllTasks from "../task/Tasks";
+import Task from "../../pages/task/Task";
+import Board from "../board/Board";
 import Issues from "../issues/Issues";
 import Issue from "../issues/Issue";
 import Chat from "../chat/Chat";
@@ -51,16 +52,20 @@ export class ContentArea extends Component {
           handleActiveMenu={this.handleActiveMenu}
           name={activeProject ? activeProject.name : "No Project Selected"}
         />
-        <div className="flex flex-column flex-1">
+        <div className="flex flex-column flex-1" style={{ overflowX: "auto" }}>
           <Userbar />
           <Switch>
             <Route path="/dashboard/profile" component={Profile} />
             {projectKeys.length !== 0 ? (
               <>
-                <Route path="/dashboard/task" component={ViewAllTasks} />
-                <Route path="/dashboard/invite" component={Invite} />
-                {/* <Route path="/dashboard/task" component={ComingSoon} /> */}
-                <Route path="/dashboard/coming-soon" component={ComingSoon} />
+                <Route exact path="/dashboard/task" component={Board} />
+                <Route exact path="/dashboard/invite" component={Invite} />
+                <Route exact path="/dashboard/task/:boardId" component={Task} />
+                <Route
+                  exact
+                  path="/dashboard/coming-soon"
+                  component={ComingSoon}
+                />
                 <Route exact path="/dashboard/issues" component={Issues} />
                 <Route exact path="/dashboard/issues/:id" component={Issue} />
               </>

@@ -34,10 +34,12 @@ const projectSchema = new mongoose.Schema(
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'Chatroom'
     // }],
-    // tasks: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Task'
-    // }],
+    boards: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Board"
+      }
+    ],
     issues: [
       {
         type: mongoose.Schema.Types.ObjectId,

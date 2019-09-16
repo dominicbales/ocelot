@@ -20,7 +20,7 @@ export class ProjectMenu extends Component {
   render() {
     const { activeMenu } = this.props;
     return (
-      <div style={{ minWidth: "150px" }}>
+      <div style={{ minWidth: "205px" }}>
         <Menu className="productmenu-style" vertical>
           <Menu.Item>
             <Menu.Header>Overview</Menu.Header>

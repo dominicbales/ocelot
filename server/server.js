@@ -17,6 +17,7 @@ const path = require("path");
 const user = require("./routes/api/user");
 const project = require("./routes/api/project");
 const issue = require("./routes/api/issue");
+const board = require("./routes/api/board");
 // const issueComment = require('./routes')
 
 // Server Config
@@ -33,6 +34,7 @@ require("./config/passport")(passport);
 //Routes
 app.use("/api/user", user);
 app.use("/api/projects", project);
+app.use("/api/boards", board);
 app.use("/api/issues", issue);
 // app.use('/api/issue/comment',)
 

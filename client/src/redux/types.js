@@ -5,6 +5,7 @@ export const SET_INVITE_NOTIFICATION = "SET_INVITE_NOTIFICATION";
 // Projects
 export const SET_PROJECTS = "SET_PROJECTS";
 export const SET_ACTIVE_PROJECT = "SET_ACTIVE_PROJECT";
+export const SET_PROJECT_BOARDS = "SET_PROJECT_BOARDS";
 // Issues
 export const SET_ISSUES = "SET_ISSUES";
 export const SET_ISSUE = "SET_ISSUE";

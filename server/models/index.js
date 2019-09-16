@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-// const keys = require("../config/keys");
 mongoose.set("debug", true);
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
@@ -9,3 +8,4 @@ module.exports.Project = require("./projects");
 module.exports.Message = require("./messages");
 module.exports.Issue = require("./Issue");
 module.exports.IssueComment = require("./IssueComment");
+module.exports.Board = require("./boards");

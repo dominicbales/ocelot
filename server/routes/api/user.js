@@ -135,13 +135,12 @@ router.get(
 //@desc     invite user to project
 //@access   public
 router.post("/invite/:projectId/user/:userId", async (req, res) => {
-  console.log("req body:", req.body);
   // Loop through array of users to send invites to
   for (let k = 0; k < req.body.invitedUsers.length; k++) {
     let user = await User.findOne({
       email: req.body.invitedUsers[k].email
     });
-    console.log("user:", user);
+
     if (user) {
       // Check if user is already in project list
       for (let i = 0; i < user.projects.length; i++) {

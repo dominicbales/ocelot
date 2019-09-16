@@ -1,20 +1,23 @@
 .sidebar-container {
-    padding: 5px;
-    overflow: auto;
-    width: 60px;
+  padding: 5px;
+  overflow: auto;
+  width: 60px;
+  min-width: 60px;
 }
 .sidebar-container-extend {
-    width: 150px;
-    align-items: flex-start !important;
-    padding: 5px;
+  width: 150px;
+  align-items: flex-start !important;
+  padding: 5px;
 }
-.sidebar-extend-icon {padding-bottom: 20px;}
+.sidebar-extend-icon {
+  padding-bottom: 20px;
+}
 .sidebar-divider {
-    border-bottom: 0.2px solid grey;
-    height: 65px;
-    margin-bottom: 10px;
-    min-height: 65px;
+  border-bottom: 0.2px solid grey;
+  height: 65px;
+  margin-bottom: 10px;
+  min-height: 65px;
 }
 .sidebar-project-btn {
-    margin-bottom: 6px !important;
+  margin-bottom: 6px !important;
 }

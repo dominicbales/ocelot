@@ -28,8 +28,6 @@ const Board = props => {
       `${localURL}api/boards/project/${activeProject._id}/${currentUser._id}`,
       data
     );
-
-    console.log("post result:", result);
   };
 
   const boardList = boards.map(value => {

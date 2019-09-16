@@ -70,8 +70,6 @@ export class Issues extends Component {
       });
     }
 
-    console.log("issues totalpages:", issues);
-
     return (
       <div
         style={{ overflowY: "auto" }}

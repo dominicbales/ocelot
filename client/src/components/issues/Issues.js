@@ -21,23 +21,6 @@ export class Issues extends Component {
   componentDidMount() {
     this.props.fetchIssues(this.props.project._id, 1);
   }
-  // shouldComponentUpdate(prevProps) {
-  //     if(prevProps.project !== this.props.activeProject || prevProps.issues !== this.props.issues){
-  //         return true;
-  //     }
-  // }
-  // handleAddIssue = async () => {
-  //     const {user, project, addIssue, fetchIssues} = this.props
-  //     const data = {
-  //         name: 'new issue',
-  //         description: 'testing adding issue',
-  //         active: 'closed',
-  //         userId: user._id,
-  //         userName: user.username
-  //     }
-  //     await addIssue(project._id, data);
-  //     await fetchIssues(project._id)
-  // }
 
   handleOpenModal = () => {
     this.setState({ extend: !this.state.extend });

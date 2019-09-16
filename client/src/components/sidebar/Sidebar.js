@@ -17,17 +17,15 @@ export class Sidebar extends Component {
     open: false
   };
 
+  // Remove this and use hooks
   handleOpenModal = () => {
     this.setState({ open: !this.state.open });
   };
 
   handleProjectClick = async id => {
-    console.log("clicked project: $", this.props);
-
     const { user, location, history } = this.props;
     await this.props.fetchProject(id);
     if (location.pathname !== "/dashboard") {
-      console.log("inside push");
       history.push("/dashboard");
     }
   };

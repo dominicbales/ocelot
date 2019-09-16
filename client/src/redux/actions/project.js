@@ -18,9 +18,7 @@ export const setProjectBoards = data => ({
 });
 
 export const fetchProjectBoards = projectId => async dispatch => {
-  console.log("inside fetch board:", projectId);
   const result = await axios.get(`${localURL}api/boards/project/${projectId}`);
-  console.log("resut in fetch board action:", result);
   dispatch(setProjectBoards(result.data));
 };
 

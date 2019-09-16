@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
@@ -8,25 +8,22 @@ import { Card, Grid } from "semantic-ui-react";
 
 import { fetchProjectBoards } from "../../redux/actions/project";
 
-export class Board extends Component {
-  async componentDidMount() {
-    const { activeProject, fetchProjectBoards, currentUser } = this.props;
-    console.log("active project:", activeProject);
-    await fetchProjectBoards(activeProject._id);
-  }
-  onDataChange = event => {
-    console.log("event task:", event);
-  };
+import AddBoardModal from "./AddBoardModal";
+import useModal from "../modals/useModal";
 
-  handleAddNewBoardClick = async () => {
-    console.log("inside on post click board");
-    const { activeProject, currentUser } = this.props;
+const Board = props => {
+  const { activeProject, fetchProjectBoards, currentUser, boards } = props;
+  const { isShowing, toggle } = useModal();
 
-    const data = {
-      boardName: "axios post test",
-      description: "asfjsadflkasdglkjsdglkjsd"
-    };
+  useEffect(() => {
+    async function fetchData() {
+      await fetchProjectBoards(activeProject._id);
+    }
 
+    fetchData();
+  }, []);
+
+  const handleAddNewBoardClick = async data => {
     const result = await axios.post(
       `${localURL}api/boards/project/${activeProject._id}/${currentUser._id}`,
       data
@@ -35,55 +32,54 @@ export class Board extends Component {
     console.log("post result:", result);
   };
 
-  render() {
-    const { boards } = this.props;
+  const boardList = boards.map(value => {
+    return (
+      <div
+        style={{
+          wordBreak: "break-all",
+          paddingTop: "10px",
+          width: "25%"
+        }}
+        key={value._id}
+      >
+        <Card
+          as={NavLink}
+          exact
+          to={`/dashboard/task/${value._id}`}
+          link
+          header={value.boardName}
+          description={value.description}
+        />
+      </div>
+    );
+  });
 
-    const boardList = boards.map(value => {
-      return (
+  return (
+    <div>
+      <div className="flex" style={{ flexWrap: "wrap", padding: "10px" }}>
+        {boardList}
         <div
+          // className="tasks-add-board-container"
           style={{
             wordBreak: "break-all",
             paddingTop: "10px",
             width: "25%"
           }}
-          key={value._id}
         >
           <Card
-            as={NavLink}
-            exact
-            to={`/dashboard/task/${value._id}`}
-            link
-            header={value.boardName}
-            description={value.description}
+            onClick={toggle}
+            // link
+            className="tasks-add-board-container"
+            description={"Create a New Board"}
           />
         </div>
-      );
-    });
-
-    return (
-      <div>
-        <div className="flex" style={{ flexWrap: "wrap", padding: "10px" }}>
-          {boardList}
-          <div
-            // className="tasks-add-board-container"
-            style={{
-              wordBreak: "break-all",
-              paddingTop: "10px",
-              width: "25%"
-            }}
-          >
-            <Card
-              onClick={this.handleAddNewBoardClick}
-              link
-              className="tasks-add-board-container"
-              description={"Create a New Board"}
-            />
-          </div>
-        </div>
+        {isShowing ? (
+          <AddBoardModal toggle={toggle} addBoard={handleAddNewBoardClick} />
+        ) : null}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   boards: state.Project.boards,

@@ -14,6 +14,7 @@ const issueSchema = new mongoose.Schema(
     ownerName: {
       type: String
     },
+    ownerImage: { type: String },
     issueComments: [
       {
         type: mongoose.Schema.Types.ObjectId,

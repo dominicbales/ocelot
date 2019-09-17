@@ -22,7 +22,8 @@ router.post(
         const newReply = {
           reply: req.body.reply,
           authorId: req.body.userId,
-          author: req.body.author
+          author: req.body.author,
+          avatar: req.body.avatar
         };
         issueComment.replies.push(newReply);
         issueComment.save();
@@ -48,7 +49,8 @@ router.post(
         const newIssueComment = new IssueComment({
           comment: req.body.comment,
           ownerId: req.body.userId,
-          ownerName: req.body.ownerName
+          ownerName: req.body.ownerName,
+          ownerImage: req.body.ownerImage
         });
         issue.issueComments.push(newIssueComment._id);
         issue.save();
@@ -111,6 +113,7 @@ router.post(
           ownerId: req.body.userId,
           ownerName: req.body.userName,
           active: req.body.active,
+          ownerImage: req.body.profileImage,
           projectId: req.params.id
         });
         project.issues.push(newIssue._id);
@@ -179,7 +182,7 @@ router.get(
 );
 
 //@route    GET /api/issues/issue/:id
-//@desc     fetches users project
+//@desc     fetches issue based on id
 //@access   private
 router.get(
   "/issue/:id",
@@ -196,10 +199,11 @@ router.get(
         }
       });
       if (issue) {
+        console.log("AYYY", issue);
         res.json(issue);
       }
     } catch (err) {
-      return next({ status: 400, message: "Cant find projects" });
+      return next({ status: 400, message: "Cant find issue based on ID" });
     }
   }
 );

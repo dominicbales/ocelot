@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import {
   Header,
   Button,
@@ -16,14 +17,15 @@ export default function ShowCommentReplies({ data }) {
     return (
       <Comment.Group key={val._id}>
         <Comment>
-          <Comment.Avatar
-            as="a"
-            src="https://randomuser.me/api/portraits/women/57.jpg"
-          />
+          <Comment.Avatar as="a" src={val.avatar} />
           <Comment.Content>
             <Comment.Author as="a">{val.author}</Comment.Author>
             <Comment.Metadata>
-              <span>{val.createdAt}</span>
+              <span>
+                {moment(val.createdAt)
+                  .startOf()
+                  .fromNow()}
+              </span>
             </Comment.Metadata>
             <Comment.Text>{val.reply}</Comment.Text>
           </Comment.Content>

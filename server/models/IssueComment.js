@@ -12,6 +12,9 @@ const issueComment = new mongoose.Schema(
     ownerName: {
       type: String
     },
+    ownerImage: {
+      type: String
+    },
     replies: [
       {
         authorId: { type: mongoose.Types.ObjectId },

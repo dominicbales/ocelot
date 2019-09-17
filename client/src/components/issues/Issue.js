@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import moment from "moment";
 import { localURL } from "../../../api";
 import {
   Header,
@@ -36,6 +37,26 @@ export class Issue extends Component {
     await this.props.fetchIssueComments(this.props.match.params.id);
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("nextpro:", nextProps.issue);
+  //   console.log("this props:", this.props.issue);
+  //   console.log(nextProps.issue === this.props.issue);
+  //   if (
+  //     JSON.stringify(nextProps.issue) !== JSON.stringify(this.props.issue) ||
+  //     nextState !== this.state ||
+  //     nextProps.issue.issueComments !== this.props.issue.issueComments
+  //   ) {
+  //     console.log("it should rerender");
+  //     console.log("should is:", nextProps.issue === this.props.issue);
+
+  //     return true;
+  //   } else {
+  //     console.log("it shouldnt rerender");
+  //     console.log("should not is:", nextProps.issue === this.props.issue);
+  //     return false;
+  //   }
+  // }
+
   componentDidUpdate(prevProps) {
     if (prevProps.issue !== this.props.issue) {
       return true;
@@ -61,7 +82,8 @@ export class Issue extends Component {
     const submitData = {
       comment: this.state.textFieldValue,
       userId: this.props.user._id,
-      ownerName: this.props.user.username
+      ownerName: this.props.user.username,
+      ownerImage: this.props.user.profileImageUrl
     };
     const result = await axios.post(
       `${localURL}api/issues/comment/${this.props.match.params.id}`,
@@ -86,7 +108,8 @@ export class Issue extends Component {
     const submitData = {
       reply: replyInput,
       userId: this.props.user._id,
-      author: this.props.user.username
+      author: this.props.user.username,
+      avatar: this.props.user.profileImageUrl
     };
     await axios.post(`${localURL}api/issues/reply/${replyTo._id}`, submitData);
     await this.props.fetchIssueComments(this.props.match.params.id);
@@ -104,14 +127,15 @@ export class Issue extends Component {
     const commentList = issueComments.map(data => {
       return (
         <Comment key={data._id}>
-          <Comment.Avatar
-            as="a"
-            src="https://randomuser.me/api/portraits/men/7.jpg"
-          />
+          <Comment.Avatar as="a" src={data.ownerImage} />
           <Comment.Content>
             <Comment.Author as="a">{data.ownerName}</Comment.Author>
             <Comment.Metadata>
-              <span>{data.createdAt}</span>
+              <span>
+                {moment(data.createdAt)
+                  .startOf()
+                  .fromNow()}
+              </span>
             </Comment.Metadata>
             <Comment.Text>{data.comment}</Comment.Text>
             <Comment.Actions>
@@ -143,7 +167,7 @@ export class Issue extends Component {
         <Divider />
         <div className="flex flex-justify-between">
           <div className="flex">
-            <img src="https://randomuser.me/api/portraits/men/86.jpg" />
+            <img src={issue.ownerImage} />
             <div style={{ marginLeft: "40px" }}>{issue.description}</div>
           </div>
           <div>

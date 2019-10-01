@@ -12,7 +12,7 @@ import Board from "../board/Board";
 import Issues from "../issues/Issues";
 import Issue from "../issues/Issue";
 import Chat from "../chat/Chat";
-import ComingSoon from "../coming-soon/ComingSoon";
+import ComingSoon from "../coming-soon/ComingSoon.tsx";
 import DashHome from "../dashboard/DashHome";
 import Invite from "../invite/Invite";
 

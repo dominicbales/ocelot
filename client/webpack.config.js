@@ -1,14 +1,15 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './index.js',
+  entry: "./index.js",
   output: {
-    path: __dirname + '/dist',
-    filename: '[name].[hash].js',
+    path: __dirname + "/dist",
+    filename: "[name].[hash].js"
   },
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -26,69 +27,70 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: "style-loader!css-loader"
       },
       {
         test: /\.scss$/,
         use: [
-            {
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                    sourceMap: true
-                }
-            },
-            {
-            loader: 'css-loader',
-                options: {
-                    sourceMap: true
-                }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                  sourceMap: true
-              }
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              sourceMap: true
+            }
           },
-            
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true
+            }
+          }
         ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              outputPath: 'images/',
-            },
-          },
-        ],
+              outputPath: "images/"
+            }
+          }
+        ]
       },
       {
         test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         exclude: /images/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',
-            publicPath: '../fonts/',
-          },
-        }],
-      },
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/",
+              publicPath: "../fonts/"
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./public/index.html",
+      template: "./public/index.html"
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: "style.[contenthash].css"
     })
   ],
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     hot: true,
-    historyApiFallback: true,
+    historyApiFallback: true
   },
   optimization: {
     splitChunks: {
@@ -97,10 +99,10 @@ module.exports = {
         vendors: false,
         // vendors chunk
         vendor: {
-          chunks: 'all',
-          test: /node_modules/,
-        },
-      },
+          chunks: "all",
+          test: /node_modules/
+        }
+      }
     }
   }
 };

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Header, Icon, Segment } from "semantic-ui-react";
-import AddProjectModal from "../modals/AddProjectModal";
+import AddProjectModal from "../../components/modals/AddProjectModal";
 
 export class DashHome extends Component {
   state = {

@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { fetchProjectsByUserArray } from "../../redux/actions/project";
 import { fetchUserInviteNotification } from "../../redux/actions/user";
 // Components
-import Sidebar from "../sidebar/Sidebar";
-import ContentArea from "../contentArea/ContentArea";
+import Sidebar from "../../components/sidebar/Sidebar";
+import ContentArea from "../../components/contentArea/ContentArea";
 
 export class Dashboard extends Component {
   state = {};

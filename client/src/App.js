@@ -7,10 +7,10 @@ import { setUser, signout } from "./redux/actions/user";
 // Semantic Components
 import { Grid, GridRow, Gri } from "semantic-ui-react";
 // Components
-import Dashboard from "./components/dashboard/Dashboard";
-import Home from "./components/home/Home";
-import Signin from "./components/signin/Signin";
-import Signup from "./components/signup/Signup";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Home from "./pages/home/Home";
+import Signin from "./pages/signin/Signin";
+import Signup from "./pages/signup/Signup";
 import withAuth from "./helper/withAuth";
 import setAuthToken from "./utils/setAuthToken";
 // Styles

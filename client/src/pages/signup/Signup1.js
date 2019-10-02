@@ -5,7 +5,7 @@ import { Input, Button } from "semantic-ui-react";
 import { localURL } from "../../../api";
 import { signin } from "../../redux/actions/user";
 // Components
-import Navbar from "../navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 
 export class Signup extends Component {
   state = {

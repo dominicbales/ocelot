@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { localURL } from "../../../api";
 // Components
-import Navbar from "../navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 
 export class Signin extends Component {
   state = {

@@ -7,6 +7,10 @@ module.exports = {
     path: __dirname + "/dist",
     filename: "[name].[hash].js"
   },
+  resolve: {
+    // Add `.ts` and `.tsx` as a resolvable extension.
+    extensions: [".ts", ".tsx", ".js"]
+  },
   module: {
     rules: [
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },

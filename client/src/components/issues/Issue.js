@@ -32,6 +32,9 @@ export class Issue extends Component {
   };
 
   async componentDidMount() {
+    console.log("user,", this.props.user);
+    console.log("issuecomments:", this.props.issueComments);
+    console.log("issue:", this.props.issue);
     console.log("issueData:", this.props.match.params.id);
     await this.props.fetchIssue(this.props.match.params.id);
     await this.props.fetchIssueComments(this.props.match.params.id);

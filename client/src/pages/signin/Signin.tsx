@@ -17,7 +17,7 @@ const Signin: React.FC = ({ user, signin }: SigninProps) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const handleSignin = () => {
+  const handleSignin = (event: React.FormEvent<HTMLFormElement>) => {
     const user: object = {
       email,
       password

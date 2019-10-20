@@ -24,7 +24,7 @@ const Signup: React.FC = ({ signin, history }: SignupProps) => {
   const [username, setUsername] = React.useState("");
 
   const handleSignupSubmit = async (
-    event: React.SyntheticEvent<HTMLFormElement>
+    event: React.FormEvent<HTMLFormElement>
   ) => {
     const user: object = {
       email,

@@ -41,7 +41,7 @@ export class AddProjectModal extends Component {
           <Header size="medium">Creating New Project</Header>
           <Form
             onChange={this.handlePrivacyChange}
-            style={{ width: "120px", textAlign: "center" }}
+            style={{ width: "30%", textAlign: "center" }}
           >
             <Form.Group widths="equal">
               {/* <Form.Field label='An HTML <input>' control='input' /> */}
@@ -53,6 +53,7 @@ export class AddProjectModal extends Component {
           </Form>
           <div>Project Name</div>
           <Input
+            style={{ width: "30%" }}
             value={name}
             onChange={this.handleNameInput}
             placeholder="Name"

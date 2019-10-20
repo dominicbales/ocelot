@@ -41,6 +41,8 @@ export class Invite extends Component {
     );
   };
   render() {
+    console.log("currentUser", this.props.currentProject);
+    console.log("user:", this.props.user);
     return (
       <div
         style={{ height: "100%" }}

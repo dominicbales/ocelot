@@ -16,6 +16,12 @@ const projectSchema = new mongoose.Schema(
         ref: "User"
       }
     ],
+    online: [
+      {
+        userId: mongoose.Types.ObjectId,
+        username: String
+      }
+    ],
     users: [
       {
         type: mongoose.Schema.Types.ObjectId,

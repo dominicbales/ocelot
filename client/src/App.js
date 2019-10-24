@@ -4,8 +4,6 @@ import jwt_decode from "jwt-decode";
 import { store } from "./redux/store";
 // Actions
 import { setUser, signout } from "./redux/actions/user";
-// Semantic Components
-import { Grid, GridRow, Gri } from "semantic-ui-react";
 // Components
 import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";

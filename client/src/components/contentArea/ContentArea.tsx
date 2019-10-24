@@ -15,6 +15,7 @@ import Issue from "../issues/Issue";
 import ComingSoon from "../coming-soon/ComingSoon";
 import DashHome from "../../pages/dashboard/DashHome";
 import Invite from "../invite/Invite";
+import RightSideBar from "../rightSideBar/RightSideBar";
 
 interface ContentAreaProps {
   children?: React.ReactNode;
@@ -39,7 +40,7 @@ const ContentArea: React.FC = ({ activeProject }: ContentAreaProps) => {
   // Checks to see if their are any keys within activeProject object
   if (activeProject) {
     projectKeys = Object.keys(activeProject);
-    console.log("projectkeys:", projectKeys);
+    // console.log("projectkeys:", projectKeys);
   }
 
   return (
@@ -51,25 +52,34 @@ const ContentArea: React.FC = ({ activeProject }: ContentAreaProps) => {
       />
       <div className="flex flex-column flex-1" style={{ overflowX: "auto" }}>
         <Userbar />
-        <Switch>
-          <Route path="/dashboard/profile" component={Profile} />
-          {projectKeys ? (
-            <>
-              <Route exact path="/dashboard/task" component={Board} />
-              <Route exact path="/dashboard/invite" component={Invite} />
-              <Route exact path="/dashboard/task/:boardId" component={Task} />
-              <Route
-                exact
-                path="/dashboard/coming-soon"
-                component={ComingSoon}
-              />
-              <Route exact path="/dashboard/issues" component={Issues} />
-              <Route exact path="/dashboard/issues/:id" component={Issue} />
-            </>
-          ) : (
-            <Route exact path="/dashboard" component={DashHome} />
-          )}
-        </Switch>
+        <div style={{ display: "flex", height: "100%" }}>
+          <div style={{ width: "90%" }}>
+            <Switch>
+              <Route path="/dashboard/profile" component={Profile} />
+              {projectKeys ? (
+                <>
+                  <Route exact path="/dashboard/task" component={Board} />
+                  <Route exact path="/dashboard/invite" component={Invite} />
+                  <Route
+                    exact
+                    path="/dashboard/task/:boardId"
+                    component={Task}
+                  />
+                  <Route
+                    exact
+                    path="/dashboard/coming-soon"
+                    component={ComingSoon}
+                  />
+                  <Route exact path="/dashboard/issues" component={Issues} />
+                  <Route exact path="/dashboard/issues/:id" component={Issue} />
+                </>
+              ) : (
+                <Route exact path="/dashboard" component={DashHome} />
+              )}
+            </Switch>
+          </div>
+          <RightSideBar />
+        </div>
       </div>
     </>
   );

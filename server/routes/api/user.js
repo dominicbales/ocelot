@@ -226,4 +226,23 @@ router.post("/invite/:userId/project/:projectId", async (req, res) => {
   res.json({ msg: "User added to project" });
 });
 
+//@route    GET /api/user/
+//@desc     get users from an SET of IDs
+//@access   public
+router.post("/", async (req, res) => {
+  try {
+    const usersObjKeys = Object.keys(req.body);
+    const usersArray = [];
+    for (let i = 0; i < usersObjKeys.length; i++) {
+      let user = await User.findOne({
+        _id: usersObjKeys[i]
+      });
+      usersArray.push(user);
+    }
+    res.status(200).json(usersArray);
+  } catch (err) {
+    console.log("Error: getting list of users:", err);
+  }
+});
+
 module.exports = router;

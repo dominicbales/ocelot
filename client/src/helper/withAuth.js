@@ -14,9 +14,7 @@ export default function withAuth(ComponentToBeRendered) {
     async componentDidMount() {
       const { setAuthorization } = this.props;
       try {
-        console.log("did mount withAuth");
         const isValidated = await axios.get(`${localURL}api/user/current`);
-        console.log("isvalidate:", isValidated.status);
         if (isValidated.status === 200) {
           await setAuthorization(true);
         }
@@ -30,6 +28,11 @@ export default function withAuth(ComponentToBeRendered) {
       if (nextProps.isAuthorized === false) {
         this.props.history.push("/");
       }
+    }
+
+    componentWillUnmount() {
+      // console.log("unmountiong from withAuth");
+      // debugger;
     }
 
     render() {

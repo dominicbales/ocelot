@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true
     },
+    isOnline: { type: Boolean },
     password: {
       type: String,
       required: true

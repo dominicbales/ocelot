@@ -1,7 +1,8 @@
 import {
   CURRENT_USER,
   SET_AUTHORIZATION,
-  SET_INVITE_NOTIFICATION
+  SET_INVITE_NOTIFICATION,
+  SET_IS_ONLINE
 } from "../types";
 import axios from "axios";
 import decode from "jwt-decode";
@@ -27,6 +28,14 @@ export const setInviteNotification = data => {
   };
 };
 
+// export const setIsOnline = data => {
+//   console.log("inside set online action");
+//   return {
+//     type: SET_IS_ONLINE,
+//     payload: data
+//   };
+// };
+
 export const fetchUserInviteNotification = userId => async dispatch => {
   const result = await axios.get(
     `${localURL}api/user/invite/user/${userId}/notification`
@@ -44,7 +53,7 @@ export const signin = data => async dispatch => {
   setAuthToken(token);
   //Decode token to get user data
   const decoded = decode(token);
-  console.log("decode:", decoded);
+  // console.log("decode:", decoded);
   //Set current user
   dispatch(setUser(decoded));
 };

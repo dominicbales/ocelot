@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { setActiveProject } from "../../redux/actions/project";
+import {
+  setActiveProject,
+  clearProjectState
+} from "../../redux/actions/project";
 // import {se} from '../../redux/actions/issue'
 import { Menu, Icon } from "semantic-ui-react";
+
 import { signout } from "../../redux/actions/user";
 
 export class ProjectMenu extends Component {
   handleItemClick = (event, value) => {
     switch (value.name) {
       case "Signout":
+        this.props.clearProjectState();
         this.props.signout();
         break;
       default:
@@ -152,5 +157,5 @@ export class ProjectMenu extends Component {
 
 export default connect(
   null,
-  { signout }
+  { signout, clearProjectState }
 )(ProjectMenu);

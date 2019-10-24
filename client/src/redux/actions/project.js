@@ -1,5 +1,12 @@
-import { SET_PROJECTS, SET_ACTIVE_PROJECT, SET_PROJECT_BOARDS } from "../types";
+import {
+  SET_PROJECTS,
+  SET_ACTIVE_PROJECT,
+  SET_PROJECT_BOARDS,
+  SET_IS_ONLINE,
+  CLEAR_PROJECT_STATE
+} from "../types";
 import axios from "axios";
+import storage from "redux-persist/lib/storage";
 import { localURL } from "../../../api";
 
 export const setProjects = data => ({
@@ -16,6 +23,18 @@ export const setProjectBoards = data => ({
   type: SET_PROJECT_BOARDS,
   payload: data
 });
+
+export const setIsOnline = data => {
+  return {
+    type: SET_IS_ONLINE,
+    payload: data
+  };
+};
+
+export const clearProjectState = () => {
+  storage.removeItem("persist:root");
+  return { type: CLEAR_PROJECT_STATE };
+};
 
 export const fetchProjectBoards = projectId => async dispatch => {
   const result = await axios.get(`${localURL}api/boards/project/${projectId}`);
@@ -41,6 +60,7 @@ export const fetchProject = id => async dispatch => {
   try {
     const result = await axios.get(`${localURL}api/projects/project/${id}`);
     dispatch(setActiveProject(result.data));
+    return result.data;
   } catch (err) {
     console.log("Error fetching project:", err);
   }

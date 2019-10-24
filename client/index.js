@@ -11,9 +11,9 @@ import App from "./src/App";
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <App />
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </HashRouter>
   </Provider>,
   document.getElementById("root")

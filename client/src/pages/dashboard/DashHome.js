@@ -11,7 +11,6 @@ export class DashHome extends Component {
   };
   render() {
     const { openModal } = this.state;
-    console.log("open:", openModal);
     return (
       <div
         className="flex flex-justify-center flex-align-items-center"

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { localURL } from "../../../api";
 import socketIOClient from "socket.io-client";
-export const socket = socketIOClient("http://localhost:3000");
+export const socket = socketIOClient(localURL);
 import { Responsive, Segment } from "semantic-ui-react";
 // Actions
 import {

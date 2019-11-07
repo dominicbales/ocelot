@@ -28,7 +28,7 @@ export class ProjectMenu extends Component {
       <div style={{ minWidth: "205px" }}>
         <Menu className="productmenu-style" vertical>
           <Menu.Item>
-            <Menu.Header>Overview</Menu.Header>
+            <Menu.Header style={{ color: "white" }}>Overview</Menu.Header>
             <Menu.Menu>
               <Menu.Item
                 as={NavLink}
@@ -48,7 +48,10 @@ export class ProjectMenu extends Component {
           </Menu.Item>
 
           <Menu.Item>
-            <Menu.Header className="flex flex-justify-between">
+            <Menu.Header
+              className="flex flex-justify-between"
+              style={{ color: "white" }}
+            >
               Chat
               <Icon name="add circle" />
             </Menu.Header>
@@ -70,7 +73,7 @@ export class ProjectMenu extends Component {
             </Menu.Menu>
           </Menu.Item>
           <Menu.Item>
-            <Menu.Header>Task</Menu.Header>
+            <Menu.Header style={{ color: "white" }}>Task</Menu.Header>
             <Menu.Menu>
               <Menu.Item
                 as={NavLink}
@@ -103,7 +106,7 @@ export class ProjectMenu extends Component {
             </Menu.Menu>
           </Menu.Item>
           <Menu.Item>
-            <Menu.Header>Issues</Menu.Header>
+            <Menu.Header style={{ color: "white" }}>Issues</Menu.Header>
             <Menu.Menu>
               <Menu.Item
                 as={NavLink}
@@ -129,7 +132,7 @@ export class ProjectMenu extends Component {
             </Menu.Menu>
           </Menu.Item>
           <Menu.Item>
-            <Menu.Header>Setting</Menu.Header>
+            <Menu.Header style={{ color: "white" }}>Setting</Menu.Header>
             <Menu.Menu>
               <Menu.Item
                 as={NavLink}

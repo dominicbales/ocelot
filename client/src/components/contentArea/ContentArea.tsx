@@ -50,7 +50,16 @@ const ContentArea: React.FC = ({ activeProject }: ContentAreaProps) => {
         handleActiveMenu={setActiveMenu}
         name={activeProject ? activeProject.name : "No Project Selected"}
       />
-      <div className="flex flex-column flex-1" style={{ overflowX: "auto" }}>
+      <div
+        className="flex flex-column flex-1"
+        // background color can be either or
+        style={{
+          overflowX: "auto",
+          backgroundColor: "#252525",
+          // backgroundColor: "#292929",
+          border: "1px solid #1b1b1b"
+        }}
+      >
         <Userbar />
         <div style={{ display: "flex", height: "100%" }}>
           <div style={{ width: "90%" }}>

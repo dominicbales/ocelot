@@ -1,16 +1,14 @@
-// const express = require('express');
 require("dotenv").config();
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const cors = require("cors");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { User, Project } = require("./models/index");
 const passport = require("passport");
 const PORT = process.env.PORT || 3000;
-const seed = require("./seed");
+// const seed = require("./seed");
 const path = require("path");
 
 // Importing routes
@@ -18,10 +16,8 @@ const user = require("./routes/api/user");
 const project = require("./routes/api/project");
 const issue = require("./routes/api/issue");
 const board = require("./routes/api/board");
-// const issueComment = require('./routes')
 
 // Server Config
-// const app = express();
 app.use(cors());
 
 // Middleware setup
@@ -36,13 +32,8 @@ app.use("/api/user", user);
 app.use("/api/projects", project);
 app.use("/api/boards", board);
 app.use("/api/issues", issue);
-// app.use('/api/issue/comment',)
 
 // seed();
-
-// app.get("/", function(req, res) {
-//   res.send("ayyyy dkjasfklj");
-// });
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/dist"));

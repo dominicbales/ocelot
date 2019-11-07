@@ -1,0 +1,11 @@
+left side bar: background-color: #00363a;
+**************************************************
+leftSide:     background-color: #1b1b1b;
+projectmenu: background-color: #212121;
+	     border: 2px solid #212121;
+cpntent area     background-color: #292929;
+		box-shadow: 2px 2px #1b1b1b;
+		***or****
+		#252525
+
+rightside bar     border: 2px solid #232323;

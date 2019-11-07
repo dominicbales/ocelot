@@ -5,3 +5,30 @@
 .tasks-add-board-container:hover {
   background-color: red;
 }
+
+.task-lane-section {
+  margin: 6px;
+  min-width: 200px;
+}
+
+.task-card-style {
+  margin-bottom: 10px !important;
+}
+
+.task-lane-header {
+  width: 100%;
+  color: white;
+  background-color: red;
+  margin-bottom: 1px;
+  padding: 4px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.task-scroll-body {
+  padding: 6px 10px 6px 10px !important;
+  margin: 0 !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+}

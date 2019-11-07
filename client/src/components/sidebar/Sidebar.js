@@ -61,18 +61,21 @@ export class Sidebar extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (
-      this.props.activeProject === null ||
-      nextProps.activeProject !== this.props.activeProject
-    ) {
-      return true;
-    }
-    return false;
-  }
+  // causes AddProjectModal not to open
+  // check if state open changes and then it should rerender
+  // shouldComponentUpdate(nextProps) {
+  //   if (
+  //     this.props.activeProject === null ||
+  //     nextProps.activeProject !== this.props.activeProject
+  //   ) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   // Remove this and use hooks
   handleOpenModal = () => {
+    console.log("open was clicked");
     this.setState({ open: !this.state.open });
   };
 

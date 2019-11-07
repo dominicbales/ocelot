@@ -4,6 +4,18 @@ import axios from "axios";
 
 import { localURL } from "../../../api";
 
+import CardSection from "../../components/board/CardSection";
+import LaneHeader from "../../components/board/LaneHeader";
+import LaneScrollSection from "../../components/board/LaneScrollSection";
+import TaskCard from "../../components/board/TaskCard";
+
+const components = {
+  Card: TaskCard,
+  LaneHeader: LaneHeader,
+  ScrollableLane: LaneScrollSection,
+  Section: CardSection
+};
+
 function Task({ match }) {
   const [data, setData] = useState({ lanes: [] });
   const [loading, setLoading] = useState(true);
@@ -40,6 +52,10 @@ function Task({ match }) {
   ) : (
     <div style={{ overflowY: "auto" }}>
       <Board
+        style={{
+          backgroundColor: "#252525"
+        }}
+        // components={components}
         data={data}
         draggable
         id="EditableBoard1"

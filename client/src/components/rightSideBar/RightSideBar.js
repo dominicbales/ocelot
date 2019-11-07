@@ -19,12 +19,15 @@ const RightSideBar = ({ isOnline }) => {
   return (
     <Card
       style={{
-        width: "10%",
+        width: "15%",
         margin: "0",
-        height: "100%"
+        height: "100%",
+        backgroundColor: "#292929",
+        boxShadow: "2px 2px #1b1b1b",
+        border: "1px solid #1b1b1b"
       }}
     >
-      <h5 style={{ paddingLeft: "15%" }}>Online</h5>
+      <h5 style={{ textAlign: "center" }}>Online</h5>
       <ul style={{ margin: "0" }}>{onlineList}</ul>
     </Card>
   );

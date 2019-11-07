@@ -217,6 +217,7 @@ export class Issue extends Component {
               </Header>
               <TextArea
                 style={{
+                  marginTop: "10px",
                   width: "60%",
                   maxWidth: "90%",
                   minWidth: "60%",

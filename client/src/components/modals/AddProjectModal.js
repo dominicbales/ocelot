@@ -35,6 +35,7 @@ export class AddProjectModal extends Component {
 
   render() {
     const { name } = this.state;
+    console.log("add project model");
     return (
       <div className="add-project-modal-container">
         <Card className="add-project-modal-style flex-justify-center flex-align-items-center">
@@ -53,7 +54,7 @@ export class AddProjectModal extends Component {
           </Form>
           <div>Project Name</div>
           <Input
-            style={{ width: "30%" }}
+            style={{ width: "60%" }}
             value={name}
             onChange={this.handleNameInput}
             placeholder="Name"

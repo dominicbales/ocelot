@@ -15,8 +15,6 @@ router.post(
   async (req, res, next) => {
     try {
       //finding a issue
-      console.log("req body:", req.body);
-      console.log("params:", req.params.id);
       let issueComment = await IssueComment.findOne({ _id: req.params.id });
       if (issueComment) {
         const newReply = {
@@ -199,7 +197,6 @@ router.get(
         }
       });
       if (issue) {
-        console.log("AYYY", issue);
         res.json(issue);
       }
     } catch (err) {

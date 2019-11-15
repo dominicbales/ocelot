@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const app = require("express")();
 const server = require("http").createServer(app);
-const io = require("socket.io")(server);
+// const io = require("socket.io")(server);
 
 const userSchema = new mongoose.Schema(
   {

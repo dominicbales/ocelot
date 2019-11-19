@@ -79,5 +79,6 @@ function launchSockets() {
 module.exports = {
   launchSockets,
   app,
-  server
+  server,
+  express
 };

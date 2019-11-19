@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 // const seed = require("./seed");
 const path = require("path");
 // Importing Sockets
-const { launchSockets, app, server } = require("./sockets");
+const { launchSockets, app, server, express } = require("./sockets");
 
 // Importing routes
 const user = require("./routes/api/user");

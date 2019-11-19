@@ -41,6 +41,7 @@ jobs:
       - checkout:
           path: ~/ocelot
       - run: echo "Testing"
+      - run: npm install
       - run: npm run test
 workflows:
   version: 2

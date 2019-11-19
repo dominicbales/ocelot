@@ -28,7 +28,8 @@ jobs:
       - image: circleci/node:8.9
     working_directory: ~/ocelot/client
     steps:
-      - checkout
+      - checkout:
+        path: ~/ocelot
       - run: echo "npm installing"
       - run: npm install
       - run: CI=true npm run build
@@ -37,7 +38,8 @@ jobs:
       - image: circleci/node:8.9
     working_directory: ~/ocelot/client
     steps:
-      - checkout
+      - checkout:
+        path: ~/ocelot
       - run: echo "Testing"
       - run: npm run test
 workflows:

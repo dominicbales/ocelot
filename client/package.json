@@ -8,6 +8,7 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
     "test": "jest --runInBand",
+    "test-dev": "jest --watchAll",
     "clear_jest": "jest --clearCache"
   },
   "author": "",

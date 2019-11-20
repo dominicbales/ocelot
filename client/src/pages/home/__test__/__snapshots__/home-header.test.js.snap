@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render home page 1`] = `
+<div
+  className="flex flex-justify-center flex-align-items-center home-header-section"
+  style={
+    Object {
+      "height": "95%",
+    }
+  }
+>
+  <div
+    className="flex home-header-content-container"
+  >
+    <div
+      className="flex flex-justify-center flex-column home-header-content"
+    >
+      <h1>
+        Build products without the need for multiple apps
+      </h1>
+      <p>
+        Ocelot lets you to keep track of projects issues, task and allows you to group chat with other developers that are on the project
+      </p>
+      <div>
+        <NavLink
+          to="/signin"
+        >
+          <Button
+            as="button"
+          >
+            Sign in
+          </Button>
+        </NavLink>
+        <NavLink
+          to="/signup"
+        >
+          <Button
+            as="button"
+          >
+            Sign up
+          </Button>
+        </NavLink>
+      </div>
+    </div>
+    <div
+      className="home-header-img-container"
+    >
+      <img
+        className="home-header-img"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

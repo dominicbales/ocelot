@@ -7,14 +7,14 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "test": "jest"
+    "test": "jest --watchAll",
+    "clear_jest": "jest --clearCache"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/react": "^16.9.2",
     "axios": "^0.19.0",
-    "babel-jest": "^24.9.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
@@ -42,6 +42,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.23",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^2.1.1",
     "enzyme": "^3.10.0",
@@ -63,13 +64,36 @@
     "webpack-dev-server": "^3.5.0"
   },
   "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
     ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/fileTransformer.js"
+    },
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.(js|jsx)$": "babel-jest",
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "baseUrl": "src",
+        "babelConfig": {
+          "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+          ],
+          "plugins": [
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-transform-runtime"
+          ]
+        }
+      }
     },
     "setupFiles": [
       "raf/polyfill"
@@ -79,7 +103,7 @@
       "<rootDir>src/setupTests.ts"
     ],
     "snapshotSerializers": [
-      "enzyme-to-json"
+      "enzyme-to-json/serializer"
     ]
   }
 }

@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchProject } from "../../redux/actions/project";
 // Components
-import Project from "../../pages/project/project";
+import Project from "../../pages/project/Project";
 import ProjectMenu from "../projectMenu/ProjectMenu";
 import Userbar from "../userbar/Userbar";
 import Profile from "../profile/Profile";

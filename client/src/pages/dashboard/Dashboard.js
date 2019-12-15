@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { localURL } from "../../../api";
-import socketIOClient from "socket.io-client";
-export const socket = socketIOClient(localURL);
 import { Responsive, Segment } from "semantic-ui-react";
 // Actions
 import {
@@ -10,7 +8,9 @@ import {
   setIsOnline
 } from "../../redux/actions/project";
 import { fetchUserInviteNotification } from "../../redux/actions/user";
-
+// Sockets
+import socketIOClient from "socket.io-client";
+export const socket = socketIOClient(localURL);
 // Components
 import Sidebar from "../../components/sidebar/Sidebar";
 import ContentArea from "../../components/contentArea/ContentArea";
@@ -99,7 +99,8 @@ const mapStateToProps = state => ({
   projects: state.Project.projects
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchProjectsByUserArray, fetchUserInviteNotification, setIsOnline }
-)(Dashboard);
+export default connect(mapStateToProps, {
+  fetchProjectsByUserArray,
+  fetchUserInviteNotification,
+  setIsOnline
+})(Dashboard);

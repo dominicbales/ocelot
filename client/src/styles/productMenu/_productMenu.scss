@@ -8,10 +8,11 @@
   // border: 1px solid #1b1b1b !important;
   a {
     color: #888888 !important;
+    letter-spacing: 0.08em;
   }
 }
 
 .ui.vertical.menu .item .menu .link.item:hover,
 .ui.vertical.menu .item .menu a.item:hover {
-  color: rgba(0, 0, 0, 0.85) !important;
+  color: #00ffc4 !important;
 }

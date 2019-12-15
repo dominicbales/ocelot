@@ -23,6 +23,34 @@ class Navbar extends Component {
 
         <Menu.Menu position="right">
           <Menu.Item
+            className="nav-item-style"
+            as={NavLink}
+            exact
+            to="/"
+            name="Home"
+            active={activeItem === "home"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            className="nav-item-style"
+            as={NavLink}
+            to="#product"
+            exact
+            name="Product"
+            active={activeItem === "product"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            className="nav-item-style"
+            as={NavLink}
+            exact
+            to="#features"
+            name="Features"
+            active={activeItem === "features"}
+            onClick={this.handleItemClick}
+          />
+
+          {/* <Menu.Item
             as={NavLink}
             exact
             to="/signin"
@@ -37,7 +65,7 @@ class Navbar extends Component {
             name="signup"
             active={activeItem === "signup"}
             onClick={this.handleItemClick}
-          />
+          /> */}
         </Menu.Menu>
       </Menu>
     );

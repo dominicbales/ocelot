@@ -9,7 +9,6 @@ exports[`should render home page 1`] = `
     }
   }
 >
-  <Navbar />
   <HomeHeader />
   <HomeContent />
   <div />

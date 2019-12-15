@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
-import {NavLink} from 'react-router-dom'
-import {Card} from 'semantic-ui-react';
+// import React, { Component } from 'react'
+// import {NavLink} from 'react-router-dom'
+// import {Card} from 'semantic-ui-react';
 
+// export class Project extends Component {
+//     render() {
+//         return (
+//             <Card className='product-card-container'>
+//                 project
+//                 <NavLink to='/profile'>Profile</NavLink>
 
-export class Project extends Component {
-    render() {
-        return (
-            <Card className='product-card-container'>
-                project
-                <NavLink to='/profile'>Profile</NavLink>
+//             </Card>
+//         )
+//     }
+// }
 
-            </Card>
-        )
-    }
-}
-
-export default Project
+// export default Project

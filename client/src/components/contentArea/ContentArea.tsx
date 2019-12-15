@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchProject } from "../../redux/actions/project";
 // Components
-// import Project from "../project/Project";
+import Project from "../../pages/project/Project";
 import ProjectMenu from "../projectMenu/ProjectMenu";
 import Userbar from "../userbar/Userbar";
 import Profile from "../profile/Profile";
@@ -67,6 +67,7 @@ const ContentArea: React.FC = ({ activeProject }: ContentAreaProps) => {
               <Route path="/dashboard/profile" component={Profile} />
               {projectKeys ? (
                 <>
+                  <Route exact path="/dashboard/project" component={Project} />
                   <Route exact path="/dashboard/task" component={Board} />
                   <Route exact path="/dashboard/invite" component={Invite} />
                   <Route
@@ -98,7 +99,4 @@ const mapStateToProps = state => ({
   activeProject: state.Project.activeProject
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchProject }
-)(ContentArea);
+export default connect(mapStateToProps, { fetchProject })(ContentArea);

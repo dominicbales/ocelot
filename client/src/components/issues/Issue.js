@@ -170,7 +170,7 @@ export class Issue extends Component {
         <Divider />
         <div className="flex flex-justify-between">
           <div className="flex">
-            <img src={issue.ownerImage} />
+            <img style={{ height: "fit-content" }} src={issue.ownerImage} />
             <div style={{ marginLeft: "40px" }}>{issue.description}</div>
           </div>
           <div>
@@ -245,7 +245,6 @@ const mapStateToProps = state => ({
   issueComments: state.Issue.issueComments
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchIssue, fetchIssueComments }
-)(Issue);
+export default connect(mapStateToProps, { fetchIssue, fetchIssueComments })(
+  Issue
+);

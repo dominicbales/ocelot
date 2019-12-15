@@ -9,11 +9,11 @@
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "../client",
-    "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     // "noImplicitAny": false,
     // "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": false,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true

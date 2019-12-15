@@ -1,14 +1,40 @@
+.home-header-section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .home-header-content-container {
-  width: 60%;
-  height: 60%;
+  width: 100%;
+  height: 95%;
   flex-direction: row;
+  justify-content: flex-end;
 
   .home-header-content {
-    width: 50%;
+    width: 40%;
     padding: 12px;
+    margin-right: 4%;
+    margin-top: 4%;
+    .home-header-title {
+      font-size: 5rem;
+      font-weight: 600;
+      margin: 0;
+      color: white;
+    }
+    .home-header-subtitle {
+      font-size: 3rem;
+      color: white;
+    }
+    .home-header-text {
+      font-size: 24px;
+      color: white;
+    }
   }
   .home-header-img-container {
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .home-header-img {
       width: 400px;
     }

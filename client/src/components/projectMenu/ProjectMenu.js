@@ -32,7 +32,7 @@ export class ProjectMenu extends Component {
             <Menu.Menu>
               <Menu.Item
                 as={NavLink}
-                to="/dashboard/coming-soon"
+                to="/dashboard/project"
                 name={this.props.name ? this.props.name : "No Project Selected"}
                 active={activeMenu === "projectName"}
                 onClick={() => this.props.handleActiveMenu("projectName")}
@@ -158,7 +158,4 @@ export class ProjectMenu extends Component {
   }
 }
 
-export default connect(
-  null,
-  { signout, clearProjectState }
-)(ProjectMenu);
+export default connect(null, { signout, clearProjectState })(ProjectMenu);

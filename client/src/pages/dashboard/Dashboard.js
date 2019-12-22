@@ -42,6 +42,7 @@ export class Dashboard extends Component {
       // remove from online
       socket.emit("remove_user_from_project_online", removeProjectMeta);
       socket.on("user_was_removed_online", onlineData => {
+        console.log("user was removed from online");
         setIsOnline(onlineData);
       });
     }

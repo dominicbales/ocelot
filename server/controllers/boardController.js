@@ -1,14 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const jwt = require("jsonwebtoken");
-const passport = require("passport");
+const catchAsync = require("../utils/catchAsync");
 
-const { User, Project, Board } = require("../../models/index");
+const { Project, Board } = require("../models/index");
 
-//@route    GET /api/boards/project/:projectId
-//@desc     fetches boards for project
-//@access   private
-router.get("/project/:projectId", async (req, res) => {
+exports.fetchBoardByProjectID = catchAsync(async (req, res, next) => {
   try {
     let boards = await Board.find({ projectId: req.params.projectId });
     if (boards) {
@@ -19,10 +13,7 @@ router.get("/project/:projectId", async (req, res) => {
   }
 });
 
-//@route    POST /api/boards/project/:projectId/:userId
-//@desc     Create board
-//@access   private
-router.post("/project/:projectId/:userId", async (req, res) => {
+exports.createBoard = catchAsync(async (req, res, next) => {
   const { boardName, description } = req.body;
   try {
     let project = await Project.findOne({ _id: req.params.projectId });
@@ -40,10 +31,7 @@ router.post("/project/:projectId/:userId", async (req, res) => {
   }
 });
 
-//@route    GET /api/boards/:boardId/lanes
-//@desc     get board data
-//@access   private
-router.get("/:boardId/lanes", async (req, res) => {
+exports.getBoardData = catchAsync(async (req, res, next) => {
   try {
     let board = await Board.findOne({ _id: req.params.boardId });
     if (board) {
@@ -54,10 +42,7 @@ router.get("/:boardId/lanes", async (req, res) => {
   }
 });
 
-//@route    POST /api/boards/:boardId
-//@desc     add data to board lanes,
-//@access   private
-router.post("/:boardId", async (req, res) => {
+exports.addToBoardLanes = catchAsync(async (req, res) => {
   const { lanes } = req.body;
   try {
     let board = await Board.findOne({ _id: req.params.boardId });
@@ -67,5 +52,3 @@ router.post("/:boardId", async (req, res) => {
     console.log("ERROR: adding new lanes:", err);
   }
 });
-
-module.exports = router;

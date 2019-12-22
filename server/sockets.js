@@ -6,7 +6,7 @@ const { User, Project } = require("./models/index");
 
 function launchSockets() {
   io.on("connection", function(socket) {
-    console.log("******CONNECTED*********");
+    console.log("Socket is now Connected");
     socket.on("joined_project", async data => {
       socket.join(`project/${data.id}`);
       let project = await Project.findOne({
@@ -32,20 +32,26 @@ function launchSockets() {
     });
 
     socket.on("remove_user_from_project_online", async data => {
-      let project = await Project.findOne({
-        _id: data.id
-      });
+      try {
+        let project = await Project.findOne({
+          _id: data.id
+        });
 
-      const filterArray = project.online.filter(val => {
-        return val.userId != data.user._id;
-      });
-      project.online = filterArray;
-      project.save();
-      io.in(`project/${data.id}`).emit(
-        "user_was_removed_online",
-        project.online
-      );
-      socket.leave(`project/${data.id}`);
+        const filterArray = project.online.filter(val => {
+          return val.userId != data.user._id;
+        });
+        project.online = filterArray;
+        project.save();
+
+        io.in(`project/${data.id}`).emit(
+          "user_was_removed_online",
+          project.online
+        );
+
+        socket.leave(`project/${data.id}`);
+      } catch (err) {
+        console.log("error removing user from online:", err);
+      }
     });
 
     socket.on("user_connecting", async value => {
@@ -61,17 +67,8 @@ function launchSockets() {
       }
     });
 
-    socket.on("disconnecting", async value => {
-      try {
-        let user = await User.findOne({
-          _id: value
-        });
-        user.isOnline = false;
-        user.save();
-        // socket.emit("user_disconnected", "User is now offline");
-      } catch (err) {
-        console.log("error disconnecting user:", err);
-      }
+    socket.on("disconnecting", async () => {
+      console.log("Socket is disconnected");
     });
   });
 }

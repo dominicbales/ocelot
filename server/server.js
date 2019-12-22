@@ -9,13 +9,14 @@ const path = require("path");
 const { launchSockets, app, server, express } = require("./sockets");
 
 // Importing routes
-const user = require("./routes/api/user");
-const project = require("./routes/api/project");
-const issue = require("./routes/api/issue");
-const board = require("./routes/api/board");
+const user = require("./routes/api/userRoutes");
+const project = require("./routes/api/projectRoutes");
+const issue = require("./routes/api/issueRoutes");
+const board = require("./routes/api/boardRoutes");
 
 // Server Config
-app.use(cors());
+// app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //Passport middleware

@@ -65,8 +65,5 @@ export default function withAuth(ComponentToBeRendered) {
     };
   }
 
-  return connect(
-    mapStateToProps,
-    { setAuthorization }
-  )(Authenticate);
+  return connect(mapStateToProps, { setAuthorization })(Authenticate);
 }

@@ -18,7 +18,7 @@ const projectSchema = new mongoose.Schema(
     ],
     online: [
       {
-        userId: mongoose.Types.ObjectId,
+        userId: mongoose.Schema.Types.ObjectId,
         username: String
       }
     ],

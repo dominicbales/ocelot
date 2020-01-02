@@ -1,7 +1,18 @@
 .product-card-container {
-    flex: 1;
-    margin: 0 !important;
-    border-radius: inherit !important;
-    padding: 5px !important;
-    width: 100% !important;
+  flex: 1;
+  margin: 0 !important;
+  border-radius: inherit !important;
+  padding: 5px !important;
+  width: 100% !important;
+}
+
+.project-overview-cards {
+  height: 100% !important;
+  width: 100% !important;
+  background-color: #232222 !important;
+  border: 1px solid #797979 !important;
+}
+
+.project-overview-cards-title {
+  color: #b9b9b9 !important;
 }

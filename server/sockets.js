@@ -6,7 +6,6 @@ const { User, Project } = require("./models/index");
 
 function launchSockets() {
   io.on("connection", function(socket) {
-    console.log("Socket is now Connected");
     socket.on("joined_project", async data => {
       socket.join(`project/${data.id}`);
       let project = await Project.findOne({
@@ -67,9 +66,7 @@ function launchSockets() {
       }
     });
 
-    socket.on("disconnecting", async () => {
-      console.log("Socket is disconnected");
-    });
+    socket.on("disconnecting", async () => {});
   });
 }
 

@@ -3,32 +3,24 @@ import { Card, Button, Table } from "semantic-ui-react";
 
 const ProjectTaskTodo: React.FC = () => {
   return (
-    <Card style={{ height: "100%", width: "100%" }}>
+    <Card className="project-overview-cards">
       <Card.Content style={{ flexGrow: "unset" }}>
         <Card.Header>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <h3>Today Task</h3>
+            <h3 className="project-overview-cards-title">Today Task</h3>
             <div>
-              <Button style={{ backgroundColor: "#7bfddc" }} size="mini">
-                Add to Task
-              </Button>
+              <Button size="mini">Add to Task</Button>
             </div>
           </div>
         </Card.Header>
       </Card.Content>
       <Card.Content>
-        <Table singleLine>
+        <Table inverted selectable singleLine>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell style={{ backgroundColor: "#7bfddc" }}>
-                Task Name
-              </Table.HeaderCell>
-              <Table.HeaderCell style={{ backgroundColor: "#7bfddc" }}>
-                Status
-              </Table.HeaderCell>
-              <Table.HeaderCell style={{ backgroundColor: "#7bfddc" }}>
-                Edit
-              </Table.HeaderCell>
+              <Table.HeaderCell>Task Name</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>Edit</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -52,7 +44,9 @@ const ProjectTaskTodo: React.FC = () => {
         </Table>
       </Card.Content>
       <Card.Content style={{ flexGrow: "unset" }}>
-        <Card.Header>Show More</Card.Header>
+        <Card.Header className="project-overview-cards-title">
+          Show More
+        </Card.Header>
       </Card.Content>
     </Card>
   );

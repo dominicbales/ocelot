@@ -9,7 +9,7 @@ const containerStyles = {
 
 const ProjectChart: React.FC<Props> = () => {
   return (
-    <Card style={{ height: "100%", width: "100%" }}>
+    <Card className="project-overview-cards">
       <Card.Content>
         <div
           className="rainbow-p-vertical_medium rainbow-m_auto"

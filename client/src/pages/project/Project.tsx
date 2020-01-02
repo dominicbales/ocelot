@@ -16,7 +16,7 @@ const Project: React.FC = () => {
   ];
   return (
     <>
-      <h1>Project Name</h1>
+      <h1 className="project-overview-cards-title">Project Name</h1>
       <RGL
         className="layout"
         layout={layout}

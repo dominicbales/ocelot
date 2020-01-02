@@ -11,6 +11,11 @@
   background-color: white;
 }
 
+body .ui.card,
+body .ui.cards > .card {
+  box-shadow: none;
+}
+
 .react-grid-layout {
   position: relative;
   transition: height 200ms ease;

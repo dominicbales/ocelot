@@ -35,9 +35,11 @@ const ProjectStatus: React.FC = () => {
   };
 
   return (
-    <Card style={{ height: "100%", width: "100%" }}>
+    <Card className="project-overview-cards">
       <Card.Content style={{ flexGrow: "unset" }}>
-        <Card.Header>Project Status</Card.Header>
+        <Card.Header className="project-overview-cards-title">
+          Project Status
+        </Card.Header>
       </Card.Content>
       <Card.Content>
         <Chart

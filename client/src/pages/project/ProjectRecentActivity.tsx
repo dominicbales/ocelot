@@ -7,9 +7,11 @@ import Elliot from "../../images/elliot.jpg";
 
 const ProjectRecentActivity: React.FC = () => {
   return (
-    <Card style={{ height: "100%", width: "100%" }}>
+    <Card className="project-overview-cards">
       <Card.Content className="project-recent-header-content">
-        <Card.Header>Recent Activity</Card.Header>
+        <Card.Header className="project-overview-cards-title">
+          Recent Activity
+        </Card.Header>
       </Card.Content>
       <Card.Content>
         <Feed>

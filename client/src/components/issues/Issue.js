@@ -132,17 +132,26 @@ export class Issue extends Component {
         <Comment key={data._id}>
           <Comment.Avatar as="a" src={data.ownerImage} />
           <Comment.Content>
-            <Comment.Author as="a">{data.ownerName}</Comment.Author>
+            <Comment.Author className="issue-header-color" as="a">
+              {data.ownerName}
+            </Comment.Author>
             <Comment.Metadata>
-              <span>
+              <span className="issue-date-color">
                 {moment(data.createdAt)
                   .startOf()
                   .fromNow()}
               </span>
             </Comment.Metadata>
-            <Comment.Text>{data.comment}</Comment.Text>
+            <Comment.Text className="issue-sub-color">
+              {data.comment}
+            </Comment.Text>
             <Comment.Actions>
-              <a onClick={() => this.handleReplyClick(data)}>Reply</a>
+              <a
+                className="issue-header-color"
+                onClick={() => this.handleReplyClick(data)}
+              >
+                Reply
+              </a>
             </Comment.Actions>
           </Comment.Content>
           {data.replies.length ? <ShowCommentReplies data={data} /> : null}
@@ -153,7 +162,9 @@ export class Issue extends Component {
     return (
       <div style={{ padding: "50px", overflowY: "auto" }}>
         <div>
-          <Header as="h1">{issue.issueName}</Header>
+          <Header className="issue-header-color" as="h1">
+            {issue.issueName}
+          </Header>
           <Card
             className="flex flex-row"
             style={{
@@ -171,10 +182,10 @@ export class Issue extends Component {
         <div className="flex flex-justify-between">
           <div className="flex">
             <img style={{ height: "fit-content" }} src={issue.ownerImage} />
-            <div style={{ marginLeft: "40px" }}>{issue.description}</div>
+            <div className="issue-description">{issue.description}</div>
           </div>
           <div>
-            <h5>Active</h5>
+            <h5 className="issue-header-color">Active</h5>
             <Select
               onClick={this.handleClick}
               value={issue.active}
@@ -182,11 +193,13 @@ export class Issue extends Component {
               placeholder="Select status"
               options={this.state.option}
             />
-            <h5>Assigned</h5>
+            <h5 className="issue-header-color" s>
+              Assigned
+            </h5>
           </div>
         </div>
         <Comment.Group threaded>
-          <Header as="h3" dividing>
+          <Header className="issue-header-color" as="h3" dividing>
             Comments
           </Header>
           {commentList}

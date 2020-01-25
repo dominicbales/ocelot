@@ -19,15 +19,17 @@ export default function ShowCommentReplies({ data }) {
         <Comment>
           <Comment.Avatar as="a" src={val.avatar} />
           <Comment.Content>
-            <Comment.Author as="a">{val.author}</Comment.Author>
+            <Comment.Author className="issue-header-color" as="a">
+              {val.author}
+            </Comment.Author>
             <Comment.Metadata>
-              <span>
+              <span className="issue-date-color">
                 {moment(val.createdAt)
                   .startOf()
                   .fromNow()}
               </span>
             </Comment.Metadata>
-            <Comment.Text>{val.reply}</Comment.Text>
+            <Comment.Text className="issue-sub-color">{val.reply}</Comment.Text>
           </Comment.Content>
         </Comment>
       </Comment.Group>

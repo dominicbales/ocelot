@@ -10,7 +10,7 @@ class Navbar extends Component {
   render() {
     const { activeItem } = this.state;
     return (
-      <Menu secondary>
+      <Menu className="nav-container" secondary>
         <Menu.Item
           className="nav-brand-style"
           as={NavLink}
@@ -21,32 +21,23 @@ class Navbar extends Component {
           onClick={this.handleItemClick}
         />
 
-        <Menu.Menu position="right">
+        <Menu.Menu className="nav-menu-item" position="right">
           <Menu.Item
             className="nav-item-style"
             as={NavLink}
+            to="/signin"
             exact
-            to="/"
-            name="Home"
-            active={activeItem === "home"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            className="nav-item-style"
-            as={NavLink}
-            to="#product"
-            exact
-            name="Product"
-            active={activeItem === "product"}
+            name="Signin"
+            active={activeItem === "signin"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
             className="nav-item-style"
             as={NavLink}
             exact
-            to="#features"
-            name="Features"
-            active={activeItem === "features"}
+            to="/signup"
+            name="Signup"
+            active={activeItem === "signup"}
             onClick={this.handleItemClick}
           />
 

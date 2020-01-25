@@ -5,7 +5,6 @@ exports[`should render home page 1`] = `
   className="flex flex-justify-center flex-align-items-center home-header-section"
   style={
     Object {
-      "backgroundImage": "url([object Object])",
       "height": "100%",
     }
   }
@@ -28,11 +27,6 @@ exports[`should render home page 1`] = `
         <h1
           className="home-header-title"
         >
-          Ocelot
-        </h1>
-        <h1
-          className="home-header-subtitle"
-        >
           Build products without the need for multiple apps
         </h1>
         <p
@@ -40,27 +34,20 @@ exports[`should render home page 1`] = `
         >
           Ocelot lets you to keep track of projects issues and tasks while also allowing you to chat with project members.
         </p>
-        <div>
-          <NavLink
-            to="/signin"
-          >
-            <Button
-              as="button"
-            >
-              Sign in
-            </Button>
-          </NavLink>
-          <NavLink
-            to="/signup"
-          >
-            <Button
-              as="button"
-            >
-              Sign up
-            </Button>
-          </NavLink>
-        </div>
       </div>
+      <img
+        className="home-header-image"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+        style={
+          Object {
+            "paddingLeft": "14px",
+          }
+        }
+      />
     </div>
   </div>
 </div>

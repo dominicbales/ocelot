@@ -10,7 +10,7 @@ exports[`should render home page 1`] = `
   }
 >
   <HomeHeader />
-  <HomeContent />
-  <div />
+  <HomeFeature />
+  <Footer />
 </div>
 `;

@@ -1,0 +1,43 @@
+.home-feature-container {
+  padding: 50px;
+  .home-feature-title {
+    font-size: 3em;
+    text-align: center;
+  }
+  .home-feature-card {
+    margin-bottom: 15%;
+  }
+}
+
+.home-feature-subtitle {
+  font-size: 2.5em;
+}
+.home-feature-text {
+  font-size: 1.5em;
+}
+
+// Media queries
+// Iphone
+@media only screen and (max-width: 450px) {
+  .home-feature-container {
+    padding: 10px;
+  }
+  .home-feature-card {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .home-feature-image {
+    width: 90% !important;
+  }
+  .home-feature-text {
+    font-size: 1.3em;
+    text-align: center;
+  }
+}
+
+// Media queries
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
+  .home-feature-content {
+    padding: 10px;
+  }
+}

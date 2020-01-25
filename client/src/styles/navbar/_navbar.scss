@@ -1,9 +1,30 @@
+.nav-container {
+  max-height: 10% !important;
+  height: 10% !important;
+  margin-bottom: 0 !important;
+  .nav-menu-item {
+    .active.item {
+      background: #55f0f0 !important;
+      color: white !important;
+      font-weight: bold !important;
+    }
+  }
+}
+
 .nav-brand-style {
   background-color: inherit !important;
   font-size: 40px !important;
-  color: white !important;
-  font-weight: 100 !important;
+  color: #55f0f0 !important;
+  font-weight: bold !important;
 }
 .nav-item-style {
-  color: white !important;
+  color: #55f0f0 !important;
+  letter-spacing: 2px;
+}
+
+// Media queries
+@media only screen and (max-width: 450px) {
+  .nav-brand-style {
+    font-size: 20px !important;
+  }
 }

@@ -53,14 +53,16 @@ export class Issues extends Component {
                   issueData: val
                 }}
               >
-                <div>
+                <div className="issue-header-color">
                   <Icon color={issueColor} name={issueIcon} />
                   {val.issueName}
-                  <h6 style={{ margin: "0" }}>
+                  <h6 className="issue-header-color" style={{ margin: "0" }}>
                     Created by {val.ownerName}{" "}
-                    {moment(val.createdAt)
-                      .startOf()
-                      .fromNow()}
+                    <span className="issue-date-color">
+                      {moment(val.createdAt)
+                        .startOf()
+                        .fromNow()}
+                    </span>
                   </h6>
                 </div>
               </NavLink>
@@ -91,7 +93,7 @@ export class Issues extends Component {
           </Button>
         </div>
 
-        <Table style={{ width: "60%" }} selectable celled striped>
+        <Table inverted style={{ width: "60%" }} selectable celled striped>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell colSpan="3">Issues</Table.HeaderCell>
@@ -127,7 +129,4 @@ const mapStateToProps = state => ({
   issues: state.Issue.issues
 });
 
-export default connect(
-  mapStateToProps,
-  { addIssue, fetchIssues }
-)(Issues);
+export default connect(mapStateToProps, { addIssue, fetchIssues })(Issues);

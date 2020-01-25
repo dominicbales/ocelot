@@ -4,14 +4,15 @@ import * as React from "react";
 
 // Components
 import HomeHeader from "./header/HomeHeader";
-import HomeContent from "./content/HomeContent";
+import HomeFeature from "./feature/HomeFeature";
+import Footer from "../../components/footer/Footer";
 
 const Home: React.FC = () => {
   return (
     <div style={{ backgroundColor: "#fefefe", height: "100%" }}>
       <HomeHeader />
-      <HomeContent />
-      <div />
+      <HomeFeature />
+      <Footer />
     </div>
   );
 };

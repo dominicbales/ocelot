@@ -1,0 +1,21 @@
+.footer-container {
+  height: 30%;
+  background-color: #3f3d56;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #55f0f0;
+}
+
+.footer-ul {
+  list-style: none !important;
+}
+
+.footer-list-item {
+  font-size: 1.5em;
+  margin: 5px 0 5px 0;
+}
+
+.footer-nav-link {
+  color: #55f0f0;
+}
